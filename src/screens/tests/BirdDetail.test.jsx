@@ -1,5 +1,6 @@
 
 import { normalizeRecordings } from "../BirdDetail"
+import { UNKNOWN } from "../../constants"
 
 const rec1 = {
     id: 1,
@@ -47,12 +48,12 @@ const recordings = [
 
 describe('BirdDetail normalize data tests', () => {
     it('should filter out items which do not have required properties', () => {
-        const normalized = normalizeRecordings(recordings)
+        const normalized = normalizeRecordings(recordings, 4)
         const ids = normalized.map(item => item.id)
         expect(ids).toEqual([1])
     })
     it('should set missing properties to defaults', () => {
-        const normalized = normalizeRecordings(data)
+        const normalized = normalizeRecordings(recordings, 4)
         const expected = {
             id: 1,
             birdId: 4,

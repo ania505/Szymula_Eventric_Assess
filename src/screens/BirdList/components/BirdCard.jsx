@@ -30,7 +30,6 @@ export function BirdCard(props) {
             </div>
           </div>
           <AddToFlock birdId={id} />
-          {/* TODO: wanting to like takes you to bird detail bc whole card is nav to that */}
         </div>
       </div>
     </>
