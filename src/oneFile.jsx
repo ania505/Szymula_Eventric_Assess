@@ -6,6 +6,7 @@ import {
   Routes,
   Link,
   useParams,
+  useNavigate
 } from "react-router-dom";
 
 import { birdListMock, recordingsToBirdMock } from "./mocks/BirdMocks";
@@ -112,6 +113,7 @@ function isNil(obj) {
 }
 
 export const BirdDetail = (props) => {
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [selectedId, setSelectedId] = useState(-1);
@@ -187,8 +189,10 @@ export const BirdDetail = (props) => {
       handleReload={handleReload}
     >
       <LoadingIndicator loading={loading}>
+        <div onClick={() => navigate('/')}>{"<"}</div>
         Bird Detail
         <>{`Name ${id}`}</>
+        <AddToFlock birdId={id} />
         <ReactGoogleMaps
           locsArray={recordings}
           selectedId={selectedId}
@@ -398,23 +402,48 @@ export function BirdList(props) {
   );
 }
 
+export function AddToFlock(props) {
+    const {birdId} = props;
+    const id = parseInt(birdId)
+    console.log(id, typeof id)
+    const handleFavoriteClick = () => {
+        let newLikesArr;
+        const retreivedLikesString = localStorage.getItem('likedFromStorage')
+        const retreivedLikesArray = JSON.parse(retreivedLikesString)
+        if (retreivedLikesArray===null) localStorage.setItem('likedFromStorage', JSON.stringify([]))
+        if (retreivedLikesArray?.includes(id)) {
+            newLikesArr = retreivedLikesArray?.filter(likedId => likedId!==id)
+        } else {
+            newLikesArr = [...retreivedLikesArray, id]
+        }
+        localStorage.setItem('likedFromStorage', JSON.stringify(newLikesArr))
+      };
+    
+    return (
+        <div onClick={handleFavoriteClick}>
+            {"<3<3<3"}
+        </div>
+    )
+    
+}
+
 export function BirdCard(props) {
   const { bird } = props;
   const { id, name, images } = bird;
   const hasImages = !!images && images.length > 0;
 
-  const handleFavoriteClick = () => {
-    let newLikesArr;
-    const retreivedLikesString = localStorage.getItem('likedFromStorage')
-    const retreivedLikesArray = JSON.parse(retreivedLikesString)
-    if (retreivedLikesArray===null) localStorage.setItem('likedFromStorage', JSON.stringify([]))
-    if (retreivedLikesArray?.includes(id)) {
-        newLikesArr = retreivedLikesArray?.filter(likedId => likedId!==id)
-    } else {
-        newLikesArr = [...retreivedLikesArray, id]
-    }
-    localStorage.setItem('likedFromStorage', JSON.stringify(newLikesArr))
-  };
+//   const handleFavoriteClick = () => {
+//     let newLikesArr;
+//     const retreivedLikesString = localStorage.getItem('likedFromStorage')
+//     const retreivedLikesArray = JSON.parse(retreivedLikesString)
+//     if (retreivedLikesArray===null) localStorage.setItem('likedFromStorage', JSON.stringify([]))
+//     if (retreivedLikesArray?.includes(id)) {
+//         newLikesArr = retreivedLikesArray?.filter(likedId => likedId!==id)
+//     } else {
+//         newLikesArr = [...retreivedLikesArray, id]
+//     }
+//     localStorage.setItem('likedFromStorage', JSON.stringify(newLikesArr))
+//   };
 
 
   return (
@@ -435,9 +464,7 @@ export function BirdCard(props) {
           />
         )}
       </Link>
-      <div onClick={handleFavoriteClick}>
-        {"<3<3<3"}
-      </div>
+      <AddToFlock birdId={id} />
     </>
   );
 }
