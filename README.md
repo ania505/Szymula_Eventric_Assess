@@ -1,80 +1,28 @@
-# Getting Started with Create React App
+# Hello Eventric!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Thank you so much for taking the time to review my project and code!
 
-## Available Scripts
+Steps to run the application:
 
-In the project directory, you can run:
+1. First enter `npm install` into your terminal to install any of the packages I used.
+2. Enter `npm start` into your terminal. I found that that can cause an error sometimes, so if that happens run `npm install react-scripts` and then `npm start` start again.
 
-### `npm start`
+I don't have a lot of experience with tests, but because they were mentioned in the last interview round, I tried my hand at a couple of them.
+To see them run:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Run `npm test` in your terminal.
 
 
 
+How to use the application:
+- On opening the app, you will see the homepage that has a header and content portion. In the header there is the site title ("Where Them Birds At"), a filter/sort button,
+  and a liked list toggle. Below that there is the content portion that has 2 instances of pagination (top & bottom of page) and a list of bird
+  species with a picture, name, and heart button.
+- To filter/ sort: Click on the "Filter & Sort By" button. A popup appears, the user makes selections, hits submit, then hits close. The list is now sorted and filtered!
+- Use the arrows in the pagination part to go between pages of content.
+- To like a bird/ add to your flock click the heart button. That bird's id is saved to localStorage to then be displayed when the user clicks the "View My Flock" button
+  in the header.
+- If the user clicks on the bird title or picture, the user is taken to the Bird Details page.
+- In the detail page, user can click "back" to go back to the list or they can view the bird's species information and where they've been seen last. If they like what they   see they add or remove that bird from their flock with the heart button.
+- Map: The map is moveable and zoomable and interactive! To interact with the map, the user should click on one of the blue location markers. The blue location marker turns red and the information about that bird sighting is listed below the map so the user can see "where them birds at".
 
-npm install to install all extra libraries
-
-npm start to run application in localhost
-if that doesn't work you may need to enter 'npm install react-scripts'
-
-run npm test so run tests
