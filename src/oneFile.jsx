@@ -26,8 +26,6 @@ import { birdListMock, recordingsToBirdMock } from "./mocks/birdMocks";
 
 const WIDTH_RATIO = 3;
 const HEIGHT_RATIO = 2;
-const IMG_SIZE = 100;
-// const MAP_SIZE = IMG_SIZE * 1.3;
 const MAP_SIZE = 150 * 1.3;
 const MAP_CENTER_LAT = 40;
 const MAP_CENTER_LNG = -100;
@@ -228,8 +226,6 @@ export const BirdDetail = (props) => {
               className="bird-card-img"
               src={currentBird?.images[0] || NoImageIcon}
               alt={`${currentBird?.name}Bird`}
-              width={WIDTH_RATIO * IMG_SIZE}
-              height={HEIGHT_RATIO * IMG_SIZE}
             />
             <div className="info">
               <div className="top-info-and-like">
@@ -575,8 +571,6 @@ export function BirdCard(props) {
               className="bird-card-img"
               src={hasImages ? images[0] : NoImageIcon}
               alt={`${name}Bird`}
-              width={WIDTH_RATIO * IMG_SIZE}
-              height={HEIGHT_RATIO * IMG_SIZE}
             />
           </div>
         <div className="info-and-fav">

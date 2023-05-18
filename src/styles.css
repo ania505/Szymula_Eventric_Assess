@@ -64,88 +64,88 @@
 }
 
 .modal {
-    height: 30rem;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  height: 30rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .content {
-    margin: 10px;
-    width:97%;
+  margin: 10px;
+  width: 97%;
 }
 
 .modal-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .modal-title {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .x {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .x-img {
-    width: 1.5rem;
-    height: 1.5rem;
-    object-fit: cover;
-    padding: 10px;
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: cover;
+  padding: 10px;
 }
 
 form {
-    padding: 1rem;
-    font-size: 20px;
+  padding: 1rem;
+  font-size: 20px;
 }
 
 .options {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
 }
 
 label {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .input-wrapper {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .apply-button {
-    background-color: #87A330;
-    height: 35px;
-    width: 80px;
-    border-radius: 7px;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    color: white;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    border:1px solid #87A330;
-    font-size: 16px;
+  background-color: #87a330;
+  height: 35px;
+  width: 80px;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  border: 1px solid #87a330;
+  font-size: 16px;
 }
 
 .close-button {
-    background-color: rgb(73, 73, 73);
-    height: 35px;
-    width: 80px;
-    border-radius: 7px;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    color: white;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    /* border:1px solid #87A330; */
-    font-size: 16px;
+  background-color: rgb(73, 73, 73);
+  height: 35px;
+  width: 80px;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  /* border:1px solid #87A330; */
+  font-size: 16px;
 }
 
 /* bird list styling */
@@ -204,7 +204,7 @@ label {
   border-radius: 8px;
   padding: 0 0.8rem;
   box-shadow: 0px 0px 10px rgb(16, 24, 24, 0.25);
-  margin: 0 3rem 1.5rem 3rem;
+  margin: 0 2.5rem 1.5rem 2.5rem;
 }
 
 .bird-card-img-wrapper {
@@ -213,8 +213,8 @@ label {
 }
 
 .bird-card-img {
-  /* width: 4.5rem;
-    height: 4.5rem; */
+  width: 15rem;
+  height: 15rem;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -228,17 +228,16 @@ label {
 }
 
 .info-text {
-    display:flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .name-text {
   font-size: 20px;
 }
 
-
 .other-info {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .card-heart-icon-wrapper {
@@ -310,10 +309,10 @@ label {
 }
 
 .img-and-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .top-info-and-like {
@@ -326,23 +325,23 @@ label {
 }
 
 .top-info {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
   font-size: 20px;
   margin-top: 1rem;
 }
 
 .other-info {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .selected-rec {
-    margin-top: 2rem;
-    width: 80%;
+  margin-top: 2rem;
+  width: 80%;
 }
 
 .rec-num {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 /* data type usage styling */
@@ -354,20 +353,27 @@ label {
 
 /* loader styling */
 .loader {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .bird-loader {
- width: 90%
+  width: 90%;
 }
 
 @media screen and (min-width: 620px) {
   .card-container {
     background-color: pink;
-    height: 10rem;
+    height: 13rem;
     flex-direction: row;
+  }
+
+  .bird-card-img {
+    width: 11.5rem;
+    height: 11.5rem;
+    object-fit: cover;
+    border-radius: 8px;
   }
 
   .name-and-fav {
@@ -381,5 +387,5 @@ label {
 
   .selected-rec {
     width: 50%;
-}
+  }
 }
