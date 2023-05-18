@@ -148,6 +148,7 @@ export const BirdDetail = (props) => {
         json = await res.json();
       }
       const recsList = json.recordings || [];
+      console.log('JSONNNN', json)
 
       const normalizedData = recsList
         .filter((rec) => {
@@ -405,17 +406,17 @@ export function BirdList(props) {
 export function AddToFlock(props) {
     const {birdId} = props;
     const id = parseInt(birdId)
-    console.log(id, typeof id)
     const handleFavoriteClick = () => {
-        let newLikesArr;
+        // let newLikesArr;
         const retreivedLikesString = localStorage.getItem('likedFromStorage')
         const retreivedLikesArray = JSON.parse(retreivedLikesString)
-        if (retreivedLikesArray===null) localStorage.setItem('likedFromStorage', JSON.stringify([]))
-        if (retreivedLikesArray?.includes(id)) {
-            newLikesArr = retreivedLikesArray?.filter(likedId => likedId!==id)
-        } else {
-            newLikesArr = [...retreivedLikesArray, id]
-        }
+        // if (retreivedLikesArray===null) localStorage.setItem('likedFromStorage', JSON.stringify([]))
+        // if (retreivedLikesArray.includes(id)) {
+        //     newLikesArr = retreivedLikesArray.filter(likedId => likedId!==id)
+        // } else {
+        //     newLikesArr = [...retreivedLikesArray, id]
+        // }
+        const newLikesArr = retreivedLikesArray.includes(id) ? retreivedLikesArray.filter(likedId => likedId!==id) : [...retreivedLikesArray, id]
         localStorage.setItem('likedFromStorage', JSON.stringify(newLikesArr))
       };
     
@@ -431,20 +432,6 @@ export function BirdCard(props) {
   const { bird } = props;
   const { id, name, images } = bird;
   const hasImages = !!images && images.length > 0;
-
-//   const handleFavoriteClick = () => {
-//     let newLikesArr;
-//     const retreivedLikesString = localStorage.getItem('likedFromStorage')
-//     const retreivedLikesArray = JSON.parse(retreivedLikesString)
-//     if (retreivedLikesArray===null) localStorage.setItem('likedFromStorage', JSON.stringify([]))
-//     if (retreivedLikesArray?.includes(id)) {
-//         newLikesArr = retreivedLikesArray?.filter(likedId => likedId!==id)
-//     } else {
-//         newLikesArr = [...retreivedLikesArray, id]
-//     }
-//     localStorage.setItem('likedFromStorage', JSON.stringify(newLikesArr))
-//   };
-
 
   return (
     <>
@@ -489,6 +476,11 @@ function App() {
   const [data, setData] = useState([]);
   const [recordings, setRecordings] = useState([]);
   const [useMocks, setUseMocks] = useState(false);
+
+
+  const retreivedLikesString = localStorage.getItem('likedFromStorage')
+  const retreivedLikesArray = JSON.parse(retreivedLikesString)
+  if (retreivedLikesArray===null) localStorage.setItem('likedFromStorage', JSON.stringify([]))
 
   const doFetch = async () => {
     try {
