@@ -38,7 +38,13 @@ export const refine = (data, likesList, sortBy, filterList, showFavorites) => {
         : true;
     })
     .sort((bird1, bird2) => {
-      return sortFunc(bird1) >= sortFunc(bird2) ? 1 : -1;
+      if(sortBy === SortBy.MIN_LENGTH){
+        return parseInt(sortFunc(bird1)) >= parseInt(sortFunc(bird2)) ? 1 : -1;
+      } else if(sortBy === SortBy.MAX_LENGTH){
+        return parseInt(sortFunc(bird1)) >= parseInt(sortFunc(bird2)) ? -1 : 1;
+      }else {
+        return sortFunc(bird1) >= sortFunc(bird2) ? 1 : -1;
+      }
     });
 
   return res;
@@ -50,15 +56,11 @@ export const getPage = (birdsRefined, itemsPerPage, page) => {
     const pageEnd = pageStart + itemsPerPage;
     return idx > pageStart && idx < pageEnd;
   });
-  console.log({birdsRefined, itemsPerPage, birdsPage})
-  console.log(birdsPage)
   return birdsPage
 }
 
 export function BirdList(props) {
     const {
-      //showFavorites,
-      //setShowFavorites,
       data,
       doFetch,
       loading,
@@ -82,18 +84,12 @@ export function BirdList(props) {
     };
 
     const likesList = getMyFlock();
-    console.log(likesList)
 
     const birdsRefined = refine(data, likesList, sortBy, filterList, showFavorites)
     const birdsPage = getPage(birdsRefined, itemsPerPage, page)
     const lastPage = birdsRefined.length / itemsPerPage;
-  
-    // console.log({ loading, error });
-
-    console.log("DATA2", data, `page ${page}`, `birds page ${birdsPage}`)
-  
+    
     return (
-      
       <ErrorHandler error={error} handleReload={handleReload}>
         <LoadingIndicator loading={loading}>
           <div className="refine-and-flock">

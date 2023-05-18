@@ -11,9 +11,6 @@ export function RefinementHeader(props) {
   const [sortLocal, setSortLocal] = useState(props.sortBy);
   const [filterLocal, setFilterLocal] = useState(props.filterList);
 
-  // const { data, statuses, handleSubmit } = props;
-  // const stats = statuses || [];
-
   const handleFilterLocalChange = (filter) => {
     if (filterLocal.some((item) => item === filter)) {
       setFilterLocal(filterLocal.filter((item) => item !== filter));
@@ -30,7 +27,6 @@ export function RefinementHeader(props) {
   const popupStyling = {
     borderRadius: "10px",
     width: "23rem",
-    // border: '2px dashed green',
   };
 
   return (

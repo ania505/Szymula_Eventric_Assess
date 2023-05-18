@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { LOCAL_STORAGE_FLOCK_KEY } from '../../../constants'
+import { getMyFlock } from '../../../utils'
 import FilledHeart3 from '../../../icons/FilledHeart3.png'
 import HeartOutline from '../../../icons/HeartOutline.png'
 import '../../../styles.css'
@@ -12,8 +13,7 @@ export function AddToFlock(props) {
     const id = parseInt(birdId)
     
     const handleFavoriteClick = () => {
-        const likesString = localStorage.getItem(LOCAL_STORAGE_FLOCK_KEY) || "[]"
-        const likesArray = JSON.parse(likesString)
+        const likesArray = getMyFlock()
         const newLikes= likesArray.includes(id) ? 
             likesArray.filter(likedId => likedId!==id) : [...likesArray, id]
         localStorage.setItem(LOCAL_STORAGE_FLOCK_KEY, JSON.stringify(newLikes))
@@ -21,8 +21,7 @@ export function AddToFlock(props) {
     };
     
     const isFavorite = () => {
-        const likesString = localStorage.getItem(LOCAL_STORAGE_FLOCK_KEY) || "[]"
-        const likesArray = JSON.parse(likesString)
+        const likesArray = getMyFlock()
         return likesArray.includes(id)
     }
 

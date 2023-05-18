@@ -20,6 +20,27 @@ import NoImageIcon from '../icons/NoImageIcon.png';
 import ArrowLeft2 from '../icons/ArrowLeft2.png';
 import '../styles.css'
 
+export const normalizeRecordings = (recordings, id) => {
+  const normalized = recordings
+    .filter((rec) => {
+      return !isNil(rec.lat) && !isNil(rec.lng) && !isNil(rec.id);
+    })
+    .map((rec) => ({
+      id: rec.id,
+      birdId: id,
+      lat: rec.lat,
+      lng: rec.lng,
+      date: rec.date || UNKNOWN,
+      file: rec.file || UNKNOWN,
+      fileName: rec["file-name"] || UNKNOWN,
+      url: rec.url || UNKNOWN,
+      lic: rec.lic || UNKNOWN,
+      loc: rec.loc || UNKNOWN,
+      rec: rec.rec || UNKNOWN,
+    }));
+  return normalized;
+}
+
 export const BirdDetail = (props) => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
@@ -32,10 +53,6 @@ export const BirdDetail = (props) => {
     const recordingsForThisBird = selectRecordingsForBird(recordings, id);
     const recordingsForThisBirdExist = recordingsForThisBird.length > 0;
     const currentBird = data.filter(bird => bird.id === parseInt(id))[0];
-  
-    const handleSelectClick = (idx) => {
-      setSelectedId(idx);
-    };
   
     const handleReload = () => {
       doFetch();
@@ -57,26 +74,8 @@ export const BirdDetail = (props) => {
           json = await res.json();
         }
         const recsList = json.recordings || [];
-        console.log('JSONNNN', json)
   
-        const normalizedData = recsList
-          .filter((rec) => {
-            console.log(typeof rec.lat, typeof rec.lng, typeof rec.id);
-            return !isNil(rec.lat) && !isNil(rec.lng) && !isNil(rec.id);
-          })
-          .map((rec) => ({
-            id: rec.id,
-            birdId: id,
-            lat: rec.lat,
-            lng: rec.lng,
-            date: rec.date || UNKNOWN,
-            file: rec.file || UNKNOWN,
-            fileName: rec["file-name"] || UNKNOWN,
-            url: rec.url || UNKNOWN,
-            lic: rec.lic || UNKNOWN,
-            loc: rec.loc || UNKNOWN,
-            rec: rec.rec || UNKNOWN,
-          }));
+        const normalizedData = normalizeRecordings(recsList, id)
         setRecordings([...recordings, ...normalizedData]);
         setLoading(false);
         setError(false);
@@ -85,14 +84,15 @@ export const BirdDetail = (props) => {
         setError(true);
       }
     };
-  
+    
+    const selectedRec = recordings.filter((rec, recId) => recId === selectedId)[0];
+
     useEffect(() => {
       if (!recordingsForThisBirdExist) {
         doFetch();
       }
     }, [id, useMocks]);
 
-    const selectedRec = recordings.filter((rec, recId) => recId === selectedId)[0];
   
   
     return (
@@ -127,10 +127,6 @@ export const BirdDetail = (props) => {
               </div>
             </div>
           </div>
-          {/* <div onClick={() => navigate('/')}>{"<"}</div>
-          Bird Detail
-          <>{`Name ${id}`}</>
-          <AddToFlock birdId={id} /> */}
           <GoogleMaps
             locsArray={recordings}
             selectedId={selectedId}
@@ -138,7 +134,6 @@ export const BirdDetail = (props) => {
           />
           {selectedRec !== -1 && (
             <div className="selected-rec">
-              {/* {console.log({selectedRec})} */}
               <div className="rec-num">
                 Recording#: {selectedRec?.id}
               </div>
@@ -151,20 +146,7 @@ export const BirdDetail = (props) => {
             </div>
           )}
           </div>
-          {/* {recordings.map((rec, recId) => {
-            return (
-              <div
-                style={{ color: recId === selectedId ? "red" : "black" }}
-                onClick={() => handleSelectClick(recId)}
-              >
-                recording#: {rec.id} location: date: {rec.date} location:{" "}
-                {rec.loc}
-              </div>
-            );
-          })} */}
         </LoadingIndicator>
       </ErrorHandler>
     );
   };
-
-// export default BirdDetail
