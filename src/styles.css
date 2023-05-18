@@ -1,0 +1,113 @@
+/* header styling */
+.header-container {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #a0bdf2;
+    /* background-color: #2B2118; */
+    /* margin-bottom: 1.5rem; */
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 2rem;
+}
+
+.main-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 20px; */
+    padding-top: 1rem;
+}
+
+.site-img-wrapper {
+    /*  */
+}
+
+/* refinement header styling */
+.refinement-container {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* border: 3px solid orange;  */
+}
+
+.refinement-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* maxWidth: 100%;
+    maxHeight: 100%; */
+    /* width: 50%; */
+    /* border: 1px solid red;  */
+    cursor: pointer;
+}
+
+.icon-wrapper {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    /* border: 1px solid red */
+}
+
+.filter-icon {
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+    padding: 1rem;
+}
+
+.refinement-text {
+    /*  */
+}
+
+/* bird list styling */
+.refine-and-flock {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 0.5px solid rgb(16, 24, 24, 0.25);
+    border-radius: 0 0 4px 4px;
+    background-color: #a0bdf2;
+    display: flex;
+
+}
+
+.refine {
+
+}
+
+.my-flock {
+    /* border: 3px solid yellow; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.heart-icon-wrapper {
+    /* border: 3px dashed green; */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    align-items: center;
+    background-color: aliceblue;
+    width: 4rem;
+    height: 4rem;
+}
+
+.heart-img {
+    /* border: 1px solid red; */
+    width: 3.3rem;
+    height: 3rem;
+    object-fit: cover;
+    /* padding: 10px; */
+    /* border-radius: 50%; */
+    /* background-color: aliceblue; */
+}
+
+.flock-text {
+
+}

@@ -4,12 +4,19 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Link,
   useParams,
-  useNavigate
+  useNavigate,
 } from "react-router-dom";
+import SiteTitle2 from "./icons/SiteTitle2.png";
+import Filter2 from "./icons/Filter2.png";
+import FilledHeart3 from "./icons/FilledHeart3.png";
+import xIcon3 from "./icons/xIcon3.png";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 
-import { birdListMock, recordingsToBirdMock } from "./mocks/BirdMocks";
+import "./styles.css";
+
+import { birdListMock, recordingsToBirdMock } from "./mocks/birdMocks";
 
 const WIDTH_RATIO = 4;
 const HEIGHT_RATIO = 3;
@@ -113,7 +120,7 @@ function isNil(obj) {
 }
 
 export const BirdDetail = (props) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [selectedId, setSelectedId] = useState(-1);
@@ -148,7 +155,7 @@ export const BirdDetail = (props) => {
         json = await res.json();
       }
       const recsList = json.recordings || [];
-      console.log('JSONNNN', json)
+      console.log("JSONNNN", json);
 
       const normalizedData = recsList
         .filter((rec) => {
@@ -183,14 +190,13 @@ export const BirdDetail = (props) => {
     }
   }, [id, useMocks]);
 
-
   return (
     <ErrorHandler
       error={error && !recordingsForThisBirdExist}
       handleReload={handleReload}
     >
       <LoadingIndicator loading={loading}>
-        <div onClick={() => navigate('/')}>{"<"}</div>
+        <div onClick={() => navigate("/")}>{"<"}</div>
         Bird Detail
         <>{`Name ${id}`}</>
         <AddToFlock birdId={id} />
@@ -236,41 +242,50 @@ export function RefinementHeader(props) {
   };
 
   return (
-    <form onSubmit={handleSubmitLocal}>
-      <p>Sort By</p>
-      {Object.values(SortBy).map((sortType) => {
-        return (
-          <>
-            <label>
-              <input
-                type="radio"
-                value={sortType}
-                checked={sortType === sortLocal}
-                onChange={() => setSortLocal(sortType)}
-              />
-              {sortType}
-            </label>
-          </>
-        );
-      })}
-      <p>Filter By Status</p>
-      {Object.values(Status).map((stat) => {
-        return (
-          <>
-            <label>
-              <input
-                type="checkbox"
-                value={stat}
-                checked={filterLocal.some((item) => item === stat)}
-                onChange={() => handleFilterLocalChange(stat)}
-              />
-              {stat}
-            </label>
-          </>
-        );
-      })}
-      <input type="submit" />
-    </form>
+    <div className="refinement-container">
+      <div className="refinement-button">
+        <div className="icon-wrapper">
+          <img className="filter-icon" src={Filter2} alt="filterIcon" />
+        </div>
+        <div className="refinement-text">FILTER & SORT BY</div>
+      </div>
+    </div>
+    
+    // <form onSubmit={handleSubmitLocal}>
+    //   <p>Sort By</p>
+    //   {Object.values(SortBy).map((sortType) => {
+    //     return (
+    //       <>
+    //         <label>
+    //           <input
+    //             type="radio"
+    //             value={sortType}
+    //             checked={sortType === sortLocal}
+    //             onChange={() => setSortLocal(sortType)}
+    //           />
+    //           {sortType}
+    //         </label>
+    //       </>
+    //     );
+    //   })}
+    //   <p>Filter By Status</p>
+    //   {Object.values(Status).map((stat) => {
+    //     return (
+    //       <>
+    //         <label>
+    //           <input
+    //             type="checkbox"
+    //             value={stat}
+    //             checked={filterLocal.some((item) => item === stat)}
+    //             onChange={() => handleFilterLocalChange(stat)}
+    //           />
+    //           {stat}
+    //         </label>
+    //       </>
+    //     );
+    //   })}
+    //   <input type="submit" />
+    // </form>
   );
 }
 
@@ -303,8 +318,8 @@ export function ErrorHandler(props) {
   if (error) {
     return (
       <>
-        An error occurred while loading data. Click "Use Mocks" on top if you
-        would like to test the app offline
+        An error occurred while loading data. Click "Use Mocks" at the bottom of
+        the page if you would like to test the application offline.
         <div onClick={handleReload}>Reload</div>
       </>
     );
@@ -352,9 +367,8 @@ export function BirdList(props) {
   const filterFunc = (bird) =>
     filterList.some((status) => bird.status === status);
 
-
-    const retreivedLikesString = localStorage.getItem('likedFromStorage')
-    const retreivedLikesArray = JSON.parse(retreivedLikesString) 
+  const retreivedLikesString = localStorage.getItem("likedFromStorage");
+  const retreivedLikesArray = JSON.parse(retreivedLikesString);
   const birdsRefined = data
     .filter(filterFunc)
     .filter((bird) => {
@@ -379,19 +393,22 @@ export function BirdList(props) {
   return (
     <ErrorHandler error={error} handleReload={handleReload}>
       <LoadingIndicator loading={loading}>
-        <RefinementHeader
-          data={data}
-          handleSubmit={handleSubmit}
-          sortBy={sortBy}
-          filterList={filterList}
-        />
-        <button onClick={() => setShowFavorites(!showFavorites)}>
-          Toggle Favorites
-        </button>
-        {birdsPage.map((bird) => (
-          <BirdCard
-            bird={bird}
+        <div className="refine-and-flock">
+          <RefinementHeader
+            data={data}
+            handleSubmit={handleSubmit}
+            sortBy={sortBy}
+            filterList={filterList}
           />
+          <div className="my-flock" onClick={() => setShowFavorites(!showFavorites)}>
+            <div className="heart-icon-wrapper">
+              <img className="heart-img" src={FilledHeart3} alt="filledHeart" />
+            </div>
+            <div className="flock-text">View My Flock</div>
+          </div>
+        </div>
+        {birdsPage.map((bird) => (
+          <BirdCard bird={bird} />
         ))}
         <PaginationFooter
           page={page}
@@ -404,42 +421,29 @@ export function BirdList(props) {
 }
 
 export function AddToFlock(props) {
-    const {birdId} = props;
-    const id = parseInt(birdId)
-    const handleFavoriteClick = () => {
-        // let newLikesArr;
-        const retreivedLikesString = localStorage.getItem('likedFromStorage')
-        const retreivedLikesArray = JSON.parse(retreivedLikesString)
-        // if (retreivedLikesArray===null) localStorage.setItem('likedFromStorage', JSON.stringify([]))
-        // if (retreivedLikesArray.includes(id)) {
-        //     newLikesArr = retreivedLikesArray.filter(likedId => likedId!==id)
-        // } else {
-        //     newLikesArr = [...retreivedLikesArray, id]
-        // }
-        const newLikesArr = retreivedLikesArray.includes(id) ? retreivedLikesArray.filter(likedId => likedId!==id) : [...retreivedLikesArray, id]
-        localStorage.setItem('likedFromStorage', JSON.stringify(newLikesArr))
-      };
-    
-    return (
-        <div onClick={handleFavoriteClick}>
-            {"<3<3<3"}
-        </div>
-    )
-    
+  const { birdId } = props;
+  const id = parseInt(birdId);
+  const handleFavoriteClick = () => {
+    const retreivedLikesString = localStorage.getItem("likedFromStorage");
+    const retreivedLikesArray = JSON.parse(retreivedLikesString);
+    const newLikesArr = retreivedLikesArray.includes(id)
+      ? retreivedLikesArray.filter((likedId) => likedId !== id)
+      : [...retreivedLikesArray, id];
+    localStorage.setItem("likedFromStorage", JSON.stringify(newLikesArr));
+  };
+
+  return <div onClick={handleFavoriteClick}>{"<3<3<3"}</div>;
 }
 
 export function BirdCard(props) {
   const { bird } = props;
   const { id, name, images } = bird;
   const hasImages = !!images && images.length > 0;
+  const navigate = useNavigate();
 
   return (
     <>
-      <Link
-        to={{
-          pathname: `/birds/${id}`,
-        }}
-      >
+      <div onClick={() => navigate(`/birds/${id}`)}>
         <div>{name}</div>
         {hasImages && (
           <img
@@ -450,7 +454,7 @@ export function BirdCard(props) {
             height={HEIGHT_RATIO * IMG_SIZE}
           />
         )}
-      </Link>
+      </div>
       <AddToFlock birdId={id} />
     </>
   );
@@ -477,10 +481,11 @@ function App() {
   const [recordings, setRecordings] = useState([]);
   const [useMocks, setUseMocks] = useState(false);
 
-
-  const retreivedLikesString = localStorage.getItem('likedFromStorage')
-  const retreivedLikesArray = JSON.parse(retreivedLikesString)
-  if (retreivedLikesArray===null) localStorage.setItem('likedFromStorage', JSON.stringify([]))
+  const retreivedLikesString = localStorage.getItem("likedFromStorage");
+  const retreivedLikesArray = JSON.parse(retreivedLikesString);
+  if (retreivedLikesArray === null) {
+    localStorage.setItem("likedFromStorage", JSON.stringify([]));
+  }
 
   const doFetch = async () => {
     try {
@@ -497,8 +502,6 @@ function App() {
       }
       const cleaned = json
         .filter((item) => {
-          console.log(typeof item.id, typeof item.name);
-          // return typeof(item.id === 'number') && typeof(item.name === 'string')
           return !isNil(item.id) && !isNil(item.name);
         })
         .map((item) => ({
@@ -531,12 +534,14 @@ function App() {
   return (
     <Router>
       <>
-        <div style={{ backgroundColor: "red" }}>Bird Watcher App</div>
-        <div onClick={() => setUseMocks(!useMocks)}>
-          {useMocks
-            ? "Using Mock Data. Click to Use Live Data"
-            : "Using Live Data. Click to Use Mock Data"}
+        <div className="header-container">
+          <div className="main-header">
+            <div className="site-img-wrapper">
+              <img src={SiteTitle2} alt="siteTitle" />
+            </div>
+          </div>
         </div>
+
         <Routes>
           <Route
             path="/"
@@ -563,7 +568,11 @@ function App() {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <div>About Us</div>
+        <div onClick={() => setUseMocks(!useMocks)}>
+          {useMocks
+            ? "Using Mock Data. Click to Use Live Data"
+            : "Using Live Data. Click to Use Mock Data"}
+        </div>
       </>
     </Router>
   );
