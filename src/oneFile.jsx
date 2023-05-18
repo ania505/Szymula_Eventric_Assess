@@ -240,8 +240,8 @@ export const BirdDetail = (props) => {
               </div>
               <div className="other-info">
                 <div className="smaller-info-text">Status: {currentBird?.status}</div>
-                <div className="smaller-info-text">Length Max: {currentBird?.lengthMin}</div>
-                <div className="smaller-info-text">Length Min: {currentBird?.lengthMax}</div>
+                <div className="smaller-info-text">Length Min: {currentBird?.lengthMin}</div>
+                <div className="smaller-info-text">Length Max: {currentBird?.lengthMax}</div>
               </div>
             </div>
           </div>
@@ -455,7 +455,7 @@ export function PaginationFooter(props) {
       <div onClick={handlePageBack}>
         <img className="arrows" src={ArrowLeft2} alt="arrowLeft"/>
       </div>
-      <div className="page-text">{page}</div>
+      <div className="page-text">{page+1}</div>
       <div onClick={handlePageForward}>
         <img className="arrows" src={ArrowRight2} alt="arrowRight"/></div>
     </div>
@@ -606,7 +606,7 @@ export function AddToFlock(props) {
 
 export function BirdCard(props) {
   const { bird } = props;
-  const { id, name, images } = bird;
+  const { id, name, sciName, lengthMin, lengthMax, status, images } = bird;
   const hasImages = !!images && images.length > 0;
   const navigate = useNavigate();
 
@@ -622,8 +622,15 @@ export function BirdCard(props) {
               height={HEIGHT_RATIO * IMG_SIZE}
             />
           </div>
-        <div className="name-and-fav">
-          <b className="name-text">{name}</b>
+        <div className="info-and-fav">
+          <div className="info-text">
+            <b className="name-text">{name}</b>
+            <i className="name-text">{sciName}</i>
+            <div className="other-info">
+              <div>Status: {status}</div>
+              <div>Length: {lengthMin} - {lengthMax}</div>
+            </div>
+          </div>
           <AddToFlock birdId={id} />
           {/* TODO: wanting to like takes you to bird detail bc whole card is nav to that */}
         </div>
@@ -657,7 +664,7 @@ function App() {
         const res = await fetch(URL, {
           method: "GET",
           headers: {
-            "API-key": API_KEY,
+            "API-key": API_KEY_OLD,
           },
         });
         json = await res.json();

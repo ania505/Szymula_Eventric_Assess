@@ -196,7 +196,7 @@ label {
   border-radius: 8px;
 }
 
-.name-and-fav {
+.info-and-fav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -204,8 +204,18 @@ label {
   width: 75%;
 }
 
+.info-text {
+    display:flex;
+    flex-direction: column;
+}
+
 .name-text {
   font-size: 20px;
+}
+
+
+.other-info {
+    font-size: 15px;
 }
 
 .card-heart-icon-wrapper {
@@ -306,7 +316,6 @@ label {
 .selected-rec {
     margin-top: 2rem;
     width: 80%;
-
 }
 
 .rec-num {
@@ -333,5 +342,10 @@ label {
 
   .img-and-info {
     flex-direction: row;
+    margin: 0 3rem;
   }
+
+  .selected-rec {
+    width: 50%;
+}
 }
