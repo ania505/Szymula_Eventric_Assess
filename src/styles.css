@@ -1,113 +1,327 @@
 /* header styling */
 .header-container {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background-color: #a0bdf2;
-    /* background-color: #2B2118; */
-    /* margin-bottom: 1.5rem; */
-    padding-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-bottom: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #a0bdf2;
+  /* background-color: #2B2118; */
+  /* margin-bottom: 1.5rem; */
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 2rem;
 }
 
 .main-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* margin-top: 20px; */
-    padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 20px; */
+  padding-top: 1rem;
 }
 
 .site-img-wrapper {
-    /*  */
+  /*  */
 }
 
 /* refinement header styling */
 .refinement-container {
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    /* border: 3px solid orange;  */
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* border: 3px solid orange;  */
 }
 
 .refinement-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* maxWidth: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* maxWidth: 100%;
     maxHeight: 100%; */
-    /* width: 50%; */
-    /* border: 1px solid red;  */
-    cursor: pointer;
+  /* width: 50%; */
+  /* border: 1px solid red;  */
+  cursor: pointer;
 }
 
 .icon-wrapper {
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    /* border: 1px solid red */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  /* border: 1px solid red */
 }
 
 .filter-icon {
-    width: 3rem;
-    height: 3rem;
-    object-fit: cover;
-    padding: 1rem;
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  padding: 1rem;
 }
 
 .refinement-text {
-    /*  */
+  /*  */
+}
+
+.modal {
+    height: 30rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    margin: 10px;
+    width:97%;
+}
+
+.modal-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-title {
+    font-size: 30px;
+}
+
+.x {
+    cursor: pointer;
+}
+
+.x-img {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: cover;
+    padding: 10px;
+}
+
+form {
+    padding: 1rem;
+    font-size: 20px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+label {
+    font-size: 15px;
+}
+
+.apply-button {
+    background-color: #87A330;
+    height: 35px;
+    width: 80px;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    color: white;
+    margin-bottom: 1rem;
 }
 
 /* bird list styling */
 .refine-and-flock {
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-    border-bottom: 0.5px solid rgb(16, 24, 24, 0.25);
-    border-radius: 0 0 4px 4px;
-    background-color: #a0bdf2;
-    display: flex;
-
-}
-
-.refine {
-
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 0.5px solid rgb(16, 24, 24, 0.25);
+  border-radius: 0 0 4px 4px;
+  background-color: #a0bdf2;
+  display: flex;
 }
 
 .my-flock {
-    /* border: 3px solid yellow; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
+  /* border: 3px solid yellow; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
 }
 
 .heart-icon-wrapper {
-    /* border: 3px dashed green; */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    align-items: center;
-    background-color: aliceblue;
-    width: 4rem;
-    height: 4rem;
+  /* border: 3px dashed green; */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  align-items: center;
+  background-color: aliceblue;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .heart-img {
-    /* border: 1px solid red; */
-    width: 3.3rem;
-    height: 3rem;
-    object-fit: cover;
-    /* padding: 10px; */
-    /* border-radius: 50%; */
-    /* background-color: aliceblue; */
+  /* border: 1px solid red; */
+  width: 3.3rem;
+  height: 3rem;
+  object-fit: cover;
+  /* padding: 10px; */
+  /* border-radius: 50%; */
+  /* background-color: aliceblue; */
 }
 
 .flock-text {
+}
 
+/* bird card styling */
+.card-container {
+  height: 24rem;
+  background-color: #a0bdf2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 8px;
+  padding: 0 0.8rem;
+  box-shadow: 0px 0px 10px rgb(16, 24, 24, 0.25);
+  margin: 0 3rem 1.5rem 3rem;
+}
+
+.bird-card-img-wrapper {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.bird-card-img {
+  /* width: 4.5rem;
+    height: 4.5rem; */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.name-and-fav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid red; */
+  width: 75%;
+}
+
+.name-text {
+  font-size: 20px;
+}
+
+.card-heart-icon-wrapper {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  align-items: center;
+  /* background-color: aliceblue; */
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-heart-img {
+  width: 2.3rem;
+  height: 2rem;
+  object-fit: cover;
+}
+
+/* pagination styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.arrows {
+  width: 1rem;
+  height: 2rem;
+}
+
+.page-text {
+  font-size: 25px;
+  margin: 0 2rem;
+}
+
+/* bird detail styling */
+.detail-container {
+  /* margin: 1rem; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.back-button {
+  display: flex;
+  justify-content: flex-start;
+  /* border: 1px solid red; */
+  align-items: center;
+  gap: 0.75rem;
+  /* margin-bottom: 2rem; */
+  /* margin: 1rem 1rem 1rem 0; */
+  margin: 1rem 0 1rem 2rem;
+}
+
+.back-arrow {
+  width: 0.75rem;
+  height: 1rem;
+}
+
+.back-text {
+  font-size: 15px;
+}
+
+.bird-card-img {
+}
+
+.img-and-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.top-info-and-like {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
+  /* width: 90%; */
+  gap: 3rem;
+}
+
+.top-info {
+    display: flex;
+    flex-direction: column;
+  font-size: 20px;
+  margin-top: 1rem;
+}
+
+.other-info {
+    margin-top: 1rem;
+}
+
+/* data type usage styling */
+.data-type-use {
+  text-align: center;
+  margin: 4rem 0 0.5rem 0;
+  color: rgb(196, 196, 196);
+}
+
+@media screen and (min-width: 620px) {
+  .card-container {
+    background-color: pink;
+    height: 10rem;
+    flex-direction: row;
+  }
+
+  .name-and-fav {
+    margin: 0 2rem 0 1rem;
+  }
+
+  .img-and-info {
+    flex-direction: row;
+  }
 }
