@@ -336,55 +336,18 @@ function BirdList(props) {
 function BirdCard(props) {
   const { bird, favorites, setFavorites } = props;
   const { id, name, images } = bird;
-//   const hasImages = !!images && images.length > 0;
-//   console.log(bird);
-  
-//   const retreivedLikesString = localStorage.getItem('likedFromStorage')
-//   const retreivedLikesArray = JSON.parse(retreivedLikesString)
-//   console.log('haloooooo', retreivedLikesArray)
-  
-
-//   const isFavorite = favorites.some((birdId) => birdId === id);
-
 
   const handleFavoriteClick = () => {
-    console.log('<3 clicked', id)
     let newLikesArr;
     const retreivedLikesString = localStorage.getItem('likedFromStorage')
     const retreivedLikesArray = JSON.parse(retreivedLikesString)
-    console.log('haloooooo', retreivedLikesArray)
     if (retreivedLikesArray===null) localStorage.setItem('likedFromStorage', JSON.stringify([]))
-    console.log('arr & id:', retreivedLikesArray, id)
     if (retreivedLikesArray?.includes(id)) {
         newLikesArr = retreivedLikesArray?.filter(likedId => likedId!==id)
-        console.log('from if:', newLikesArr)
     } else {
         newLikesArr = [...retreivedLikesArray, id]
-        console.log('from else:', newLikesArr)
     }
     localStorage.setItem('likedFromStorage', JSON.stringify(newLikesArr))
-
-    // localStorage.setItem('likedFromStorage', JSON.stringify([id]))
-    // if (retreivedLikesArray!==null || retreivedLikesArray!==undefined) {
-    //     console.log('not null/undefined')
-    //     let newLikesArr;
-    //     if (retreivedLikesArray?.includes(id)) {
-    //         newLikesArr = retreivedLikesArray?.filter(likedId => likedId!==id)
-    //     } else {
-    //         console.log(typeof retreivedLikesArray)
-    //         newLikesArr = [...retreivedLikesArray, id]
-    //     }
-    //     localStorage.setItem('likedFromStorage', JSON.stringify(newLikesArr))
-    // } else {
-    //     console.log('in else')
-    //     localStorage.setItem('likedFromStorage', JSON.stringify([id]))
-    // }
-
-    // if (!isFavorite) {
-    //   setFavorites([...favorites, id]);
-    // } else {
-    //   setFavorites(favorites.filter((birdId) => birdId !== id));
-    // }
   };
 
   return (
