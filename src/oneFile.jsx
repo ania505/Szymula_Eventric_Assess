@@ -16,6 +16,7 @@ import NoImageIcon from "./icons/NoImageIcon.png";
 import ArrowLeft2 from "./icons/ArrowLeft2.png";
 import ArrowRight2 from "./icons/ArrowRight2.png";
 import xIcon3 from "./icons/xIcon3.png";
+import BirdRoller from "./icons/BirdRoller.gif";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 
@@ -26,7 +27,8 @@ import { birdListMock, recordingsToBirdMock } from "./mocks/birdMocks";
 const WIDTH_RATIO = 3;
 const HEIGHT_RATIO = 2;
 const IMG_SIZE = 100;
-const MAP_SIZE = IMG_SIZE * 1.3;
+// const MAP_SIZE = IMG_SIZE * 1.3;
+const MAP_SIZE = 150 * 1.3;
 const MAP_CENTER_LAT = 40;
 const MAP_CENTER_LNG = -100;
 const MAP_ZOOM = 3;
@@ -40,7 +42,7 @@ const ICONS_BASE = "http://maps.google.com/mapfiles/ms/icons/";
 const icons = {
   marker: ICONS_BASE + "blue-dot.png",
   selectedMarker: ICONS_BASE + "red-dot.png",
-}; // maybe switch with your own? with bird icons or other map icons?
+}; 
 function ReactGoogleMaps(props) {
   const containerStyle = {
     width: MAP_SIZE * WIDTH_RATIO,
@@ -224,7 +226,6 @@ export const BirdDetail = (props) => {
           <div className="img-and-info">
             <img
               className="bird-card-img"
-              // src={hasImages ? birdDetails.images[0] : NoImageIcon}
               src={currentBird?.images[0] || NoImageIcon}
               alt={`${currentBird?.name}Bird`}
               width={WIDTH_RATIO * IMG_SIZE}
@@ -373,65 +374,15 @@ export function RefinementHeader(props) {
                     );
                   })}
                 </div>
-                <input type="submit" />
-                {/* TODO: cant have children, how do i make this work for the apply button */}
+                <div className="input-wrapper" > 
+                  <input type="submit" className="apply-button" />
+                  <div className="close-button" onClick={() => close()}>Close</div>
+                </div>
             </form>
             </div>
-              
-              <b
-                className="apply-button"
-                onClick={() => close()}
-                // add apply filters func
-              >
-                Apply
-              </b>
           </div>
         )}
       </Popup>
-    // <div className="refinement-container">
-    //   <div className="refinement-button">
-    //     <div className="icon-wrapper">
-    //       <img className="filter-icon" src={Filter2} alt="filterIcon" />
-    //     </div>
-    //     <div className="refinement-text">FILTER & SORT BY</div>
-    //   </div>
-    // </div>
-    
-    // <form onSubmit={handleSubmitLocal}>
-    //   <p>Sort By</p>
-    //   {Object.values(SortBy).map((sortType) => {
-    //     return (
-    //       <>
-    //         <label>
-    //           <input
-    //             type="radio"
-    //             value={sortType}
-    //             checked={sortType === sortLocal}
-    //             onChange={() => setSortLocal(sortType)}
-    //           />
-    //           {sortType}
-    //         </label>
-    //       </>
-    //     );
-    //   })}
-    //   <p>Filter By Status</p>
-    //   {Object.values(Status).map((stat) => {
-    //     return (
-    //       <>
-    //         <label>
-    //           <input
-    //             type="checkbox"
-    //             value={stat}
-    //             checked={filterLocal.some((item) => item === stat)}
-    //             onChange={() => handleFilterLocalChange(stat)}
-    //           />
-    //           {stat}
-    //         </label>
-    //       </>
-    //     );
-    //   })}
-    //   <input type="submit" />
-    // </form>
   );
 }
 
@@ -480,7 +431,13 @@ export function ErrorHandler(props) {
 export function LoadingIndicator(props) {
   const { loading, children } = props;
   if (loading) {
-    return <>Loading...</>;
+    // return <>Loading...</>;
+    return (
+      <div className="loader">
+        <img className="bird-loader" src={BirdRoller} alt="birdLoader"/>
+        <div>Loading...</div>
+      </div>
+    )
   } else {
     return children;
   }

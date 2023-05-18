@@ -113,6 +113,11 @@ label {
     font-size: 15px;
 }
 
+.input-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
 .apply-button {
     background-color: #87A330;
     height: 35px;
@@ -123,6 +128,24 @@ label {
     align-items: center; 
     color: white;
     margin-bottom: 1rem;
+    font-weight: bold;
+    border:1px solid #87A330;
+    font-size: 16px;
+}
+
+.close-button {
+    background-color: rgb(73, 73, 73);
+    height: 35px;
+    width: 80px;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    /* border:1px solid #87A330; */
+    font-size: 16px;
 }
 
 /* bird list styling */
@@ -171,7 +194,7 @@ label {
 
 /* bird card styling */
 .card-container {
-  height: 24rem;
+  height: 27rem;
   background-color: #a0bdf2;
   display: flex;
   flex-direction: column;
@@ -329,6 +352,17 @@ label {
   color: rgb(196, 196, 196);
 }
 
+/* loader styling */
+.loader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bird-loader {
+ width: 90%
+}
+
 @media screen and (min-width: 620px) {
   .card-container {
     background-color: pink;
@@ -342,7 +376,7 @@ label {
 
   .img-and-info {
     flex-direction: row;
-    margin: 0 3rem;
+    margin: 1rem 3rem 2rem 3rem;
   }
 
   .selected-rec {
