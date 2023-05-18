@@ -133,8 +133,9 @@ export const BirdDetail = (props) => {
   console.log('propPSSSSS', props)
   const { recordings, setRecordings, useMocks, data } = props;
   const { id } = useParams();
+  console.log('for currbird', data)
   const currentBird = data.filter(bird => bird.id === parseInt(id))[0]
-  console.log(id, currentBird)
+  console.log('curr bird', currentBird)
 
   const recordingsForThisBird = selectRecordingsForBird(recordings, id);
   const recordingsForThisBirdExist = recordingsForThisBird.length > 0;
@@ -199,12 +200,12 @@ export const BirdDetail = (props) => {
     }
   }, [id, useMocks]);
 
-  // const selectedRecArr = recordings.filter(rec => parseInt(rec.id) === selectedId);
-  const selectedRecArr = recordings.map(rec => {
-    console.log(rec, typeof selectedId)
-    // rec.id === selectedId
-  });
-  console.log('selectedRecArr', selectedId, selectedRecArr)
+  const selectedRec = recordings.filter((rec, recId) => recId === selectedId)[0];
+  // const selectedRecArr = recordings.map((rec, recId) => {
+  //   console.log(rec, typeof selectedId)
+  //   // rec.id === selectedId
+  // });
+  console.log('selectedRecArr', selectedId, selectedRec)
 
   // const hasImages = !!birdDetails.images && birdDetails.images.length > 0;
 
@@ -224,23 +225,23 @@ export const BirdDetail = (props) => {
             <img
               className="bird-card-img"
               // src={hasImages ? birdDetails.images[0] : NoImageIcon}
-              src={currentBird.images[0] || NoImageIcon}
-              alt={`${currentBird.name}Bird`}
+              src={currentBird?.images[0] || NoImageIcon}
+              alt={`${currentBird?.name}Bird`}
               width={WIDTH_RATIO * IMG_SIZE}
               height={HEIGHT_RATIO * IMG_SIZE}
             />
             <div className="info">
               <div className="top-info-and-like">
                 <div className="top-info">
-                  <b className="name">{currentBird.name}</b>
-                  <i className="sci-name">{currentBird.sciName}</i>
+                  <b className="name">{currentBird?.name}</b>
+                  <i className="sci-name">{currentBird?.sciName}</i>
                 </div>
                 <AddToFlock birdId={id} />
               </div>
               <div className="other-info">
-                <div className="smaller-info-text">Status: {currentBird.status}</div>
-                <div className="smaller-info-text">Length Max: {currentBird.lengthMin}</div>
-                <div className="smaller-info-text">Length Min:{currentBird.lengthMax}</div>
+                <div className="smaller-info-text">Status: {currentBird?.status}</div>
+                <div className="smaller-info-text">Length Max: {currentBird?.lengthMin}</div>
+                <div className="smaller-info-text">Length Min: {currentBird?.lengthMax}</div>
               </div>
             </div>
           </div>
@@ -252,13 +253,22 @@ export const BirdDetail = (props) => {
           <div className="">
 
           </div>
-          {console.log('slected:', selectedId)}
-          <div className="selected-rec">
-            {/* {console.log({selectedRec})} */}
-            {/* <div className="rec-num">Recording #: {selectedRec.id}</div>
-            <div className="rec-num">Location: {selectedRec.loc}</div> */}
-          </div>
-          {recordings.map((rec, recId) => {
+          {console.log('selected:', selectedId)}
+          {selectedRec !== -1 && (
+            <div className="selected-rec">
+              {/* {console.log({selectedRec})} */}
+              <div className="rec-num">
+                Recording#: {selectedRec?.id}
+              </div>
+              <div className="rec-num">
+                Date: {selectedRec?.date}
+              </div>
+              <div className="rec-num">
+                Location: {selectedRec?.loc}
+              </div>
+            </div>
+          )}
+          {/* {recordings.map((rec, recId) => {
             return (
               <div
                 style={{ color: recId === selectedId ? "red" : "black" }}
@@ -268,7 +278,7 @@ export const BirdDetail = (props) => {
                 {rec.loc}
               </div>
             );
-          })}
+          })} */}
         </div>
       </LoadingIndicator>
     </ErrorHandler>
@@ -682,6 +692,8 @@ function App() {
   React.useEffect(() => {
     doFetch();
   }, [useMocks]);
+
+  console.log('in app', data)
 
   return (
     <Router>

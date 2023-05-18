@@ -303,6 +303,16 @@ label {
     margin-top: 1rem;
 }
 
+.selected-rec {
+    margin-top: 2rem;
+    width: 80%;
+
+}
+
+.rec-num {
+    margin-bottom: 0.5rem;
+}
+
 /* data type usage styling */
 .data-type-use {
   text-align: center;
