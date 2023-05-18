@@ -1,0 +1,593 @@
+export const recordingsToBirdMock = {
+    // "1": {
+    // recordings: [
+    // {
+    // "date": "2013-07-18",
+    // "loc": "Orlando Wetlands, Christmas, Orange County, Florida",
+    // "birdId": 1,
+    // "lic": "//creativecommons.org/licenses/by-nc-sa/3.0/",
+    // "type": "call",
+    // "gen": "Dendrocygna",
+    // "rec": "Paul Marvin",
+    // "ssp": "",
+    // "rmk": "flight over marsh",
+    // "file": "https://xeno-canto.org/143610/download",
+    // "uploaded": "2013-07-27",
+    // "playback-used": "no",
+    // "id": "143610",
+    // "sp": "autumnalis",
+    // "lat": "28.5785",
+    // "lng": "-80.9961"
+    // },
+    // {
+    // "date": "2013-07-20",
+    // "loc": "Orlando Wetlands, Christmas, Orange County, Florida",
+    // "birdId": 1,
+    // "lic": "//creativecommons.org/licenses/by-nc-sa/3.0/",
+    // "type": "call",
+    // "ssp": "",
+    // "gen": "Dendrocygna",
+    // "rmk": "a few birds on water",
+    // "rec": "Paul Marvin",
+    // "file": "https://xeno-canto.org/143613/download",
+    // "uploaded": "2013-07-27",
+    // "playback-used": "no",
+    // "id": "143613",
+    // "sp": "autumnalis",
+    // "lat": "28.5785",
+    // "lng": "-80.9961",
+    // },
+    // {
+    // "date": "2014-03-16",
+    // "loc": "Orlando Wetlands, Christmas, Orange County, Florida",
+    // "birdId": 1,
+    // "lic": "//creativecommons.org/licenses/by-nc-sa/4.0/",
+    // "type": "flight call",
+    // "gen": "Dendrocygna",
+    // "ssp": "",
+    // "rec": "Paul Marvin",
+    // "rmk": "seven flying high over marsh",
+    // "file": "https://xeno-canto.org/172907/download",
+    // "playback-used": "no",
+    // "uploaded": "2014-04-08",
+    // "id": "172907",
+    // "sp": "autumnalis",
+    // "lat": "28.5785",
+    // "lng": "-80.9961",
+    // }
+    // ]
+    // },
+    "2": {
+    recordings: [
+    {
+    "date": "2012-04-12",
+    "loc": "Santa Ana National Wildlife Refuge, Texas",
+    "birdId": 2,
+    "lic": "//creativecommons.org/licenses/by-nc-sa/3.0/",
+    "type": "call",
+    "ssp": "",
+    "gen": "Dendrocygna",
+    "rec": "Paul Marvin",
+    "rmk": "",
+    "file": "https://xeno-canto.org/147329/download",
+    "playback-used": "no",
+    "uploaded": "2013-09-12",
+    "id": "147329",
+    "sp": "bicolor",
+    "lat": "26.0737",
+    "lng": "-98.1442"
+    }
+    ]
+    },
+    "3": {
+    recordings: [
+    {
+    "date": "2013-05-23",
+    "loc": "Kougarok Road junction with Council Road, Nome Census Area, Alaska",
+    "birdId": 3,
+    "lic": "//creativecommons.org/licenses/by-nc-sa/3.0/",
+    "type": "call",
+    "rmk": "natural vocalizations; calls from one of a pair of birds flying over wet tundra.",
+    "ssp": "",
+    "rec": "Andrew Spencer",
+    "gen": "Anser",
+    "file": "https://xeno-canto.org/141710/download",
+    "uploaded": "2013-07-06",
+    "playback-used": "no",
+    "id": "141710",
+    "sp": "canagicus",
+    "lat": "64.4886",
+    "lng": "-165.335",
+    },
+    {
+    "date": "2014-06-29",
+    "loc": "Point Barrow, Barrow, North Slope Borough, Alaska",
+    "birdId": 3,
+    "lic": "//creativecommons.org/licenses/by-nc-sa/4.0/",
+    "type": "call",
+    "gen": "Anser",
+    "ssp": "",
+    "rmk": "wing noise and calls from the same pair of birds as in XC185372 upon being flushed.",
+    "rec": "Andrew Spencer",
+    "file": "https://xeno-canto.org/185373/download",
+    "uploaded": "2014-07-06",
+    "playback-used": "no",
+    "id": "185373",
+    "sp": "canagicus",
+    "lat": "71.3632",
+    "lng": "-156.5099",
+    }
+    ]
+    },
+    "4": {
+    recordings: [
+    {
+    "date": "2013-03-13",
+    "loc": "Vendel Road, Salton Sea NWR, Brawley, Imperial County, California",
+    "birdId": 4,
+    "lic": "//creativecommons.org/licenses/by-nc-sa/3.0/",
+    "type": "flight call",
+    "rmk": "small flock flying over field",
+    "rec": "Paul Marvin",
+    "gen": "Anser",
+    "ssp": "",
+    "file": "https://xeno-canto.org/143621/download",
+    "uploaded": "2013-07-27",
+    "playback-used": "no",
+    "id": "143621",
+    "sp": "caerulescens",
+    "lat": "33.0881",
+    "lng": "-115.7097",
+    },
+    {
+    "date": "2013-03-13",
+    "loc": "Vendel Road, Salton Sea NWR, Brawley, Imperial County, California",
+    "birdId": 4,
+    "lic": "//creativecommons.org/licenses/by-nc-sa/3.0/",
+    "type": "flight call",
+    "rec": "Paul Marvin",
+    "rmk": "a few birds flying over field",
+    "gen": "Anser",
+    "ssp": "",
+    "file": "https://xeno-canto.org/143622/download",
+    "uploaded": "2013-07-27",
+    "playback-used": "no",
+    "id": "143622",
+    "sp": "caerulescens",
+    "lat": "33.0881",
+    "lng": "-115.7097",
+    },
+    {
+    "date": "2015-06-12",
+    "loc": "Gaswell Road, Barrow, North Slope Borough, Alaska",
+    "birdId": 4,
+    "lic": "//creativecommons.org/licenses/by-nc-nd/4.0/",
+    "type": "flight call",
+    "rec": "Frank Lambert",
+    "gen": "Anser",
+    "ssp": "caerulescens",
+    "rmk": "",
+    "file": "https://xeno-canto.org/276930/download",
+    "playback-used": "no",
+    "uploaded": "2015-08-30",
+    "id": "276930",
+    "sp": "caerulescens",
+    "lat": "71.2564",
+    "lng": "-156.5514",
+    },
+    {
+    "date": "2017-12-16",
+    "loc": "Bosque Del Apache NWR, Socorro county, New Mexico",
+    "birdId": 4,
+    "lic": "//creativecommons.org/licenses/by-nc-nd/4.0/",
+    "type": "call, flight call",
+    "ssp": "",
+    "gen": "Anser",
+    "rmk": "also probably some Ross's Geese on this cut, but vast majority of birds in the area were Snow Geese",
+    "rec": "Frank Lambert",
+    "file": "https://xeno-canto.org/408863/download",
+    "playback-used": "no",
+    "uploaded": "2018-04-02",
+    "id": "408863",
+    "sp": "caerulescens",
+    "lat": "33.8272",
+    "lng": "-106.8861",
+    },
+    {
+    "date": "2018-01-19",
+    "loc": "Vendel Road, Salton Sea NWR, Brawley, Imperial County, California",
+    "birdId": 4,
+    "lic": "//creativecommons.org/licenses/by-nc-sa/4.0/",
+    "type": "flight call",
+    "ssp": "",
+    "gen": "Anser",
+    "rec": "Paul Marvin",
+    "rmk": "two dozen in flight over geese flock on field",
+    "file": "https://xeno-canto.org/458783/download",
+    "playback-used": "no",
+    "uploaded": "2019-02-23",
+    "id": "458783",
+    "sp": "caerulescens",
+    "lat": "33.0881",
+    "lng": "-115.7097",
+    }
+    ]
+    },
+   
+   }
+   
+   export const birdListMock = [
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1643650997626-0124dbb98261",
+    "https://images.unsplash.com/photo-1644610901347-b05ec91bb9b2",
+    "https://images.unsplash.com/photo-1641995171363-9bc67bfb1b7c"
+    ],
+    "recordings": [],
+    "lengthMin": "47",
+    "lengthMax": "51",
+    "name": "Black-bellied Whistling-Duck",
+    "id": 1,
+    "sciName": "Dendrocygna autumnalis",
+    "family": "Anseriformes",
+    "status": "Low Concern",
+    "order": "Anatidae"
+    },
+    {
+    "images": [],
+    "recordings": [],
+    "lengthMin": "44",
+    "lengthMax": "51",
+    "name": "Fulvous Whistling-Duck",
+    "id": 2,
+    "family": "Anseriformes",
+    "sciName": "Dendrocygna bicolor",
+    "order": "Anatidae",
+    "status": "Low Concern"
+    },
+    {
+    "images": [],
+    "recordings": [],
+    "lengthMin": "66",
+    "lengthMax": "71",
+    "name": "Emperor Goose",
+    "id": 3,
+    "sciName": "Anser canagicus",
+    "family": "Anseriformes",
+    "order": "Anatidae",
+    "status": "Restricted Range"
+    },
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1542252223-c7f5b1142f93",
+    "https://images.unsplash.com/photo-1663238039107-87c35fbaee67"
+    ],
+    "lengthMin": "69",
+    "lengthMax": "83",
+    "name": "Snow Goose",
+    "id": 4,
+    "sciName": "Anser caerulescens",
+    "family": "Anseriformes",
+    "order": "Anatidae",
+    "status": "Low Concern"
+    },
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1634506264722-0d6e457efc16"
+    ],
+    "lengthMin": "59",
+    "lengthMax": "64",
+    "name": "Ross's Goose",
+    "wingspanMin": "113",
+    "id": 5,
+    "wingspanMax": "116",
+    "sciName": "Anser rossii",
+    "family": "Anseriformes",
+    "status": "Low Concern",
+    "order": "Anatidae"
+    },
+    {
+    "images": [],
+    "recordings": [],
+    "lengthMin": "64",
+    "lengthMax": "81",
+    "name": "Greater White-fronted Goose",
+    "id": 6,
+    "family": "Anseriformes",
+    "sciName": "Anser albifrons",
+    "order": "Anatidae",
+    "status": "Low Concern"
+    },
+    {
+    "images": [],
+    "lengthMin": "59.2",
+    "recordings": [],
+    "lengthMax": "62.2",
+    "name": "Brant",
+    "wingspanMin": "105",
+    "wingspanMax": "108",
+    "id": 7,
+    "sciName": "Branta bernicla",
+    "family": "Anseriformes",
+    "order": "Anatidae",
+    "status": "Restricted Range"
+    },
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1654981853680-2e7830d61cae"
+    ],
+    "lengthMin": "63",
+    "recordings": [],
+    "lengthMax": "65",
+    "name": "Cackling Goose",
+    "wingspanMin": "108",
+    "wingspanMax": "111",
+    "id": 8,
+    "sciName": "Branta hutchinsii",
+    "family": "Anseriformes",
+    "status": "Low Concern",
+    "order": "Anatidae"
+    },
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1513209395699-7a1e7f745942",
+    "https://images.unsplash.com/photo-1484704324500-528d0ae4dc7d"
+    ],
+    "lengthMin": "76",
+    "recordings": [],
+    "lengthMax": "110",
+    "name": "Canada Goose",
+    "wingspanMin": "127",
+    "id": 9,
+    "wingspanMax": "170",
+    "family": "Anseriformes",
+    "sciName": "Branta canadensis",
+    "order": "Anatidae",
+    "status": "Low Concern"
+    },
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1582730463790-3c3864de6cbf",
+    "https://images.unsplash.com/photo-1661141464435-858f68c4b8f0"
+    ],
+    "lengthMin": "127",
+    "recordings": [],
+    "lengthMax": "152",
+    "name": "Mute Swan",
+    "wingspanMin": "208",
+    "id": 10,
+    "wingspanMax": "238",
+    "sciName": "Cygnus olor",
+    "family": "Anseriformes",
+    "order": "Anatidae",
+    "status": "Low Concern"
+    },
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1649577452407-7a1d8d8723ea",
+    "https://images.unsplash.com/photo-1649577452686-29836dfde598"
+    ],
+    "recordings": [],
+    "lengthMin": "138",
+    "lengthMax": "158",
+    "name": "Trumpeter Swan",
+    "id": 11,
+    "sciName": "Cygnus buccinator",
+    "family": "Anseriformes",
+    "status": "Low Concern",
+    "order": "Anatidae"
+    },
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1626405687101-0d7ec3acdc10",
+    "https://images.unsplash.com/photo-1626405687098-89ac5d6a6252"
+    ],
+    "lengthMin": "120",
+    "recordings": [],
+    "lengthMax": "147",
+    "name": "Tundra Swan",
+    "id": 12,
+    "family": "Anseriformes",
+    "sciName": "Cygnus columbianus",
+    "order": "Anatidae",
+    "status": "Low Concern"
+    },
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1604338834026-0aec6ac202bf",
+    "https://images.unsplash.com/photo-1535586315911-7fafb6a273f7",
+    "https://images.unsplash.com/photo-1657352392735-030771a297a9"
+    ],
+    "recordings": [],
+    "lengthMin": "66",
+    "lengthMax": "84",
+    "name": "Muscovy Duck",
+    "wingspanMin": "137",
+    "wingspanMax": "152",
+    "id": 13,
+    "sciName": "Cairina moschata",
+    "family": "Anseriformes",
+    "order": "Anatidae",
+    "status": "Declining"
+    },
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1517465096483-7631c1c48b75",
+    "https://images.unsplash.com/photo-1577049212826-147af542a379"
+    ],
+    "lengthMin": "47",
+    "recordings": [],
+    "lengthMax": "54",
+    "name": "Wood Duck",
+    "wingspanMin": "66",
+    "wingspanMax": "73",
+    "id": 14,
+    "family": "Anseriformes",
+    "sciName": "Aix sponsa",
+    "status": "Low Concern",
+    "order": "Anatidae"
+    },
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1662692837581-4df7428e1c5b"
+    ],
+    "lengthMin": "36",
+    "recordings": [],
+    "lengthMax": "41",
+    "name": "Blue-winged Teal",
+    "wingspanMin": "56",
+    "id": 15,
+    "wingspanMax": "62",
+    "family": "Anseriformes",
+    "sciName": "Spatula discors",
+    "status": "Low Concern",
+    "order": "Anatidae"
+    },
+    {
+    "images": [],
+    "recordings": [],
+    "lengthMin": "38.4",
+    "lengthMax": "42.8",
+    "name": "Cinnamon Teal",
+    "wingspanMin": "54",
+    "wingspanMax": "57",
+    "id": 16,
+    "family": "Anseriformes",
+    "sciName": "Spatula cyanoptera",
+    "status": "Declining",
+    "order": "Anatidae"
+    },
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1648997567747-f6a95bf3ce2a",
+    "https://images.unsplash.com/photo-1623974108424-5fe2542553b4"
+    ],
+    "lengthMin": "44",
+    "recordings": [],
+    "lengthMax": "51",
+    "name": "Northern Shoveler",
+    "wingspanMin": "69",
+    "wingspanMax": "84",
+    "id": 17,
+    "family": "Anseriformes",
+    "sciName": "Spatula clypeata",
+    "order": "Anatidae",
+    "status": "Low Concern"
+    },
+    {
+    "images": [],
+    "lengthMin": "46",
+    "recordings": [],
+    "lengthMax": "57",
+    "name": "Gadwall",
+    "id": 18,
+    "sciName": "Mareca strepera",
+    "family": "Anseriformes",
+    "status": "Low Concern",
+    "order": "Anatidae"
+    },
+    {
+    "images": [],
+    "lengthMin": "42",
+    "recordings": [],
+    "lengthMax": "52",
+    "name": "Eurasian Wigeon",
+    "id": 19,
+    "family": "Anseriformes",
+    "sciName": "Mareca penelope",
+    "status": "Low Concern",
+    "order": "Anatidae"
+    },
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1634502141156-8de3e97ad93f"
+    ],
+    "lengthMin": "42",
+    "recordings": [],
+    "lengthMax": "59",
+    "name": "American Wigeon",
+    "id": 20,
+    "sciName": "Mareca americana",
+    "family": "Anseriformes",
+    "status": "Low Concern",
+    "order": "Anatidae"
+    },
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1579444798661-ce60beaa0413",
+    "https://images.unsplash.com/photo-1465247431621-ae634a2477be"
+    ],
+    "lengthMin": "50",
+    "recordings": [],
+    "lengthMax": "65",
+    "name": "Mallard",
+    "wingspanMin": "82",
+    "id": 21,
+    "wingspanMax": "95",
+    "sciName": "Anas platyrhynchos",
+    "family": "Anseriformes",
+    "status": "Low Concern",
+    "order": "Anatidae"
+    },
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1659664007103-e0ad4701973e",
+    "https://images.unsplash.com/photo-1645798947982-ea7c61374fc2"
+    ],
+    "lengthMin": "54",
+    "recordings": [],
+    "lengthMax": "59",
+    "name": "American Black Duck",
+    "wingspanMin": "88",
+    "wingspanMax": "95",
+    "id": 22,
+    "family": "Anseriformes",
+    "sciName": "Anas rubripes",
+    "order": "Anatidae",
+    "status": "Low Concern"
+    },
+    {
+    "images": [
+    "https://images.unsplash.com/photo-1662682093478-ec57603050d0",
+    "https://images.unsplash.com/photo-1627072787938-2242eec34776",
+    "https://images.unsplash.com/photo-1661611065188-7d9c1dfd86d3"
+    ],
+    "lengthMin": "50",
+    "recordings": [],
+    "lengthMax": "57.2",
+    "name": "Mottled Duck",
+    "wingspanMin": "83.1",
+    "wingspanMax": "87.2",
+    "id": 23,
+    "sciName": "Anas fulvigula",
+    "family": "Anseriformes",
+    "order": "Anatidae",
+    "status": "Red Watch List"
+    },
+    {
+    "images": [],
+    "recordings": [],
+    "lengthMin": "51",
+    "lengthMax": "76",
+    "name": "Northern Pintail",
+    "id": 24,
+    "family": "Anseriformes",
+    "sciName": "Anas acuta",
+    "status": "Low Concern",
+    "order": "Anatidae"
+    },
+    {
+    "images": [],
+    "recordings": [],
+    "lengthMin": "31",
+    "lengthMax": "39",
+    "name": "Green-winged Teal",
+    "wingspanMin": "52",
+    "id": 25,
+    "wingspanMax": "59",
+    "family": "Anseriformes",
+    "sciName": "Anas crecca",
+    "status": "Low Concern",
+    "order": "Anatidae"
+    },
+   ]

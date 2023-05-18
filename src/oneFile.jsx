@@ -8,7 +8,7 @@ import {
   useParams,
 } from "react-router-dom";
 
-// import { mock } from "./mocks/birdMocks";
+import { birdListMock, recordingsToBirdMock } from "./mocks/BirdMocks";
 
 const WIDTH_RATIO = 4;
 const HEIGHT_RATIO = 3;
@@ -20,17 +20,15 @@ const MAP_ZOOM = 4;
 const URL = "https://nuthatch.lastelm.software/birds";
 const API_KEY_OLD = "89d7a026-ab1e-43e3-8c04-68ee6ed8cc52";
 const API_KEY = "878f02e9-fae1-4b4e-9d54-0d5d26a43f9d";
+const GOOGLE_MAPS_API_KEY = "AIzaSyDmmQdWZDkfvNeQ24Mh5dsNVUMPyEX6mBY";
 
 const ICONS_BASE = "http://maps.google.com/mapfiles/ms/icons/";
 
 const icons = {
   marker: ICONS_BASE + "blue-dot.png",
   selectedMarker: ICONS_BASE + "red-dot.png",
-};
-// maybe switch with your own? with bird icons or other map icons?
-
+}; // maybe switch with your own? with bird icons or other map icons?
 function ReactGoogleMaps(props) {
-  const googleAPIkey = "AIzaSyDmmQdWZDkfvNeQ24Mh5dsNVUMPyEX6mBY";
   const containerStyle = {
     width: MAP_SIZE * WIDTH_RATIO,
     height: MAP_SIZE * HEIGHT_RATIO,
@@ -43,7 +41,7 @@ function ReactGoogleMaps(props) {
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: googleAPIkey,
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
   });
 
   const handleMarkerClick = (idx) => {
@@ -93,6 +91,8 @@ const getSortByFunc = (sortBy) => {
   }
 };
 
+const UNKNOWN = "Unknown";
+
 const Status = {
   LOW_CONCERN: "Low Concern",
   RESTRICTED_RANGE: "Restricted Range",
@@ -102,8 +102,13 @@ const Status = {
 };
 
 function selectRecordingsForBird(recordings, birdId) {
+  // Should memoize this ourselves, or use the reselect library, or restructure recordings and data into a normalized object instead of array
   const recs = recordings.filter((rec) => rec.birdId === birdId);
   return recs;
+}
+
+function isNil(obj) {
+  return obj === null || obj === undefined;
 }
 
 export const BirdDetail = (props) => {
@@ -111,7 +116,7 @@ export const BirdDetail = (props) => {
   const [error, setError] = useState(false);
   const [selectedId, setSelectedId] = useState(-1);
 
-  const { recordings, setRecordings } = props;
+  const { recordings, setRecordings, useMocks } = props;
   const { id } = useParams();
 
   const recordingsForThisBird = selectRecordingsForBird(recordings, id);
@@ -129,28 +134,37 @@ export const BirdDetail = (props) => {
     try {
       setLoading(true);
       const detailUrl = URL + "/" + id;
-      const res = await fetch(detailUrl, {
-        method: "GET",
-        headers: {
-          "API-key": API_KEY,
-        },
-      });
-      const json = await res.json();
-      const recsList = json.recordings;
+      let json = recordingsToBirdMock[id];
+      if (!useMocks) {
+        // throw new Error
+        const res = await fetch(detailUrl, {
+          method: "GET",
+          headers: {
+            "API-key": API_KEY,
+          },
+        });
+        json = await res.json();
+      }
+      const recsList = json.recordings || [];
 
-      const normalizedData = recsList.map((rec) => ({
-        id: rec.id,
-        birdId: id,
-        lat: rec.lat,
-        lng: rec.lng,
-        date: rec.date,
-        file: rec.file,
-        fileName: rec["file-name"],
-        url: rec.url,
-        lic: rec.lic,
-        loc: rec.loc,
-        rec: rec.rec,
-      }));
+      const normalizedData = recsList
+        .filter((rec) => {
+          console.log(typeof rec.lat, typeof rec.lng, typeof rec.id);
+          return !isNil(rec.lat) && !isNil(rec.lng) && !isNil(rec.id);
+        })
+        .map((rec) => ({
+          id: rec.id,
+          birdId: id,
+          lat: rec.lat,
+          lng: rec.lng,
+          date: rec.date || UNKNOWN,
+          file: rec.file || UNKNOWN,
+          fileName: rec["file-name"] || UNKNOWN,
+          url: rec.url || UNKNOWN,
+          lic: rec.lic || UNKNOWN,
+          loc: rec.loc || UNKNOWN,
+          rec: rec.rec || UNKNOWN,
+        }));
       setRecordings([...recordings, ...normalizedData]);
       setLoading(false);
       setError(false);
@@ -164,7 +178,8 @@ export const BirdDetail = (props) => {
     if (!recordingsForThisBirdExist) {
       doFetch();
     }
-  }, [id]);
+  }, [id, useMocks]);
+
 
   return (
     <ErrorHandler
@@ -283,7 +298,8 @@ export function ErrorHandler(props) {
   if (error) {
     return (
       <>
-        An error occurred loading data
+        An error occurred while loading data. Click "Use Mocks" on top if you
+        would like to test the app offline
         <div onClick={handleReload}>Reload</div>
       </>
     );
@@ -331,9 +347,9 @@ export function BirdList(props) {
   const filterFunc = (bird) =>
     filterList.some((status) => bird.status === status);
 
+
     const retreivedLikesString = localStorage.getItem('likedFromStorage')
     const retreivedLikesArray = JSON.parse(retreivedLikesString) 
-
   const birdsRefined = data
     .filter(filterFunc)
     .filter((bird) => {
@@ -344,7 +360,6 @@ export function BirdList(props) {
     .sort((bird1, bird2) => {
       return sortFunc(bird1) >= sortFunc(bird2) ? 1 : -1;
     });
-
 
   const lastPage = birdsRefined.length / itemsPerPage;
 
@@ -401,6 +416,7 @@ export function BirdCard(props) {
     localStorage.setItem('likedFromStorage', JSON.stringify(newLikesArr))
   };
 
+
   return (
     <>
       <Link
@@ -445,26 +461,38 @@ function App() {
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
   const [recordings, setRecordings] = useState([]);
+  const [useMocks, setUseMocks] = useState(false);
 
   const doFetch = async () => {
     try {
       setLoading(true);
-      const res = await fetch(URL, {
-        method: "GET",
-        headers: {
-          "API-key": API_KEY,
-        },
-      });
-      const json = await res.json();
-      const cleaned = json.map((item) => ({
-        id: item.id,
-        images: item.images,
-        lengthMin: item.lengthMin,
-        lengthMax: item.lengthMax,
-        name: item.name,
-        status: item.status,
-        sciName: json.sciName,
-      }));
+      let json = birdListMock;
+      if (!useMocks) {
+        const res = await fetch(URL, {
+          method: "GET",
+          headers: {
+            "API-key": API_KEY,
+          },
+        });
+        json = await res.json();
+      }
+      const cleaned = json
+        .filter((item) => {
+          console.log(typeof item.id, typeof item.name);
+          // return typeof(item.id === 'number') && typeof(item.name === 'string')
+          return !isNil(item.id) && !isNil(item.name);
+        })
+        .map((item) => ({
+          id: item.id,
+          name: item.name,
+          images: item.images || [],
+          lengthMin: item.lengthMin || 0,
+          lengthMax: item.lengthMax || 0,
+          status: Object.values(Status).some((stat) => stat === item.status)
+            ? item.status
+            : UNKNOWN,
+          sciName: json.sciName || UNKNOWN,
+        }));
       // throw new Error
       console.log(`Successful: API call to ${URL}`);
       setData(cleaned);
@@ -479,12 +507,17 @@ function App() {
 
   React.useEffect(() => {
     doFetch();
-  }, []);
+  }, [useMocks]);
 
   return (
     <Router>
       <>
         <div style={{ backgroundColor: "red" }}>Bird Watcher App</div>
+        <div onClick={() => setUseMocks(!useMocks)}>
+          {useMocks
+            ? "Using Mock Data. Click to Use Live Data"
+            : "Using Live Data. Click to Use Mock Data"}
+        </div>
         <Routes>
           <Route
             path="/"
@@ -502,6 +535,7 @@ function App() {
             path="/birds/:id"
             element={
               <BirdDetail
+                useMocks={useMocks}
                 data={data}
                 recordings={recordings}
                 setRecordings={setRecordings}
