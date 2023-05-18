@@ -1,5 +1,6 @@
 
 import { Status, SortBy } from "../../constants"
+import { refine, getPage } from "../BirdList/BirdList"
 
 const IMAGE = 'https://images.unsplash.com/photo-1542252223-c7f5b1142f93'
 

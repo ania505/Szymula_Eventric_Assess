@@ -20,7 +20,6 @@ export function App() {
     const [data, setData] = useState([]);
     const [recordings, setRecordings] = useState([]);
     const [useMocks, setUseMocks] = useState(false);
-    // const [showFavorites, setShowFavorites] = useState(showFavoritesDefault);
   
     initLocalStorage()
   
@@ -40,7 +39,6 @@ export function App() {
         const cleaned = json
           .filter((item) => {
             console.log(typeof item.id, typeof item.name);
-            // return typeof(item.id === 'number') && typeof(item.name === 'string')
             return !isNil(item.id) && !isNil(item.name);
           })
           .map((item) => ({
@@ -88,8 +86,6 @@ export function App() {
                 element={
                   <BirdList
                     doFetch={doFetch}
-                    //showFavorites={showFavorites}
-                    //setShowFavorites
                     data={data}
                     setLoading={setLoading}
                     loading={loading}
@@ -101,7 +97,6 @@ export function App() {
                 path="/birds/:id"
                 element={
                   <BirdDetail
-                    // showFavorites={showFavorites}
                     useMocks={useMocks}
                     data={data}
                     recordings={recordings}
