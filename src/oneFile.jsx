@@ -247,10 +247,7 @@ export const BirdDetail = (props) => {
             selectedId={selectedId}
             setSelectedId={setSelectedId}
           />
-          <div className="">
-
-          </div>
-          {console.log('selected:', selectedId)}
+          {/* {console.log('selected:', selectedId)} */}
           {selectedRec !== -1 && (
             <div className="selected-rec">
               {/* {console.log({selectedRec})} */}
@@ -265,17 +262,6 @@ export const BirdDetail = (props) => {
               </div>
             </div>
           )}
-          {/* {recordings.map((rec, recId) => {
-            return (
-              <div
-                style={{ color: recId === selectedId ? "red" : "black" }}
-                onClick={() => handleSelectClick(recId)}
-              >
-                recording#: {rec.id} location: date: {rec.date} location:{" "}
-                {rec.loc}
-              </div>
-            );
-          })} */}
         </div>
       </LoadingIndicator>
     </ErrorHandler>
@@ -535,9 +521,6 @@ export function AddToFlock(props) {
     const retreivedLikesString = localStorage.getItem("likedFromStorage");
     const retreivedLikesArray = JSON.parse(retreivedLikesString);
     setLiked(retreivedLikesArray.includes(id))
-    // const newLikesArr = retreivedLikesArray.includes(id)
-    //   ? retreivedLikesArray.filter((likedId) => likedId !== id)
-    //   : [...retreivedLikesArray, id];
     let newLikesArr;
     if (retreivedLikesArray.includes(id)) {
       newLikesArr = retreivedLikesArray.filter((likedId) => likedId !== id)
@@ -551,7 +534,6 @@ export function AddToFlock(props) {
 
   return <div onClick={handleFavoriteClick}>
     <div className="card-heart-icon-wrapper">
-      {/* <img className="card-heart-img" src={FilledHeart3} alt="filledHeart" /> */}
       <img className="card-heart-img" src={liked ? FilledHeart3 : HeartOutline} alt="filledHeart" />
     </div>
   </div>;
