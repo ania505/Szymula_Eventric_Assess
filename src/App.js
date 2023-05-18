@@ -5,7 +5,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { API_KEY, Status} from './constants'
+import { API_KEY, API_KEY_OLD, Status} from './constants'
 import { birdListMock, recordingsToBirdMock } from './mocks/birdMocks'
 import { initLocalStorage } from "./utils";
 import { isNil } from "./utils";
@@ -32,7 +32,7 @@ export function App() {
           const res = await fetch(URL, {
             method: "GET",
             headers: {
-              "API-key": API_KEY,
+              "API-key": API_KEY_OLD,
             },
           });
           json = await res.json();
@@ -81,39 +81,41 @@ export function App() {
             </div>
           </div>
         </div>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <BirdList
-                  doFetch={doFetch}
-                  //showFavorites={showFavorites}
-                  //setShowFavorites
-                  data={data}
-                  setLoading={setLoading}
-                  loading={loading}
-                  error={error}
-                />
-              }
-            />
-            <Route
-              path="/birds/:id"
-              element={
-                <BirdDetail
-                  // showFavorites={showFavorites}
-                  useMocks={useMocks}
-                  data={data}
-                  recordings={recordings}
-                  setRecordings={setRecordings}
-                />
-              }
-            />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <div className="data-type-use" onClick={() => setUseMocks(!useMocks)}>
-            {useMocks
-              ? "Using Mock Data. Click to Use Live Data."
-              : "Using Live Data. Click to Use Mock Data."}
+          <div style={{backgroundColor: '#B6EBAD'}}>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <BirdList
+                    doFetch={doFetch}
+                    //showFavorites={showFavorites}
+                    //setShowFavorites
+                    data={data}
+                    setLoading={setLoading}
+                    loading={loading}
+                    error={error}
+                  />
+                }
+              />
+              <Route
+                path="/birds/:id"
+                element={
+                  <BirdDetail
+                    // showFavorites={showFavorites}
+                    useMocks={useMocks}
+                    data={data}
+                    recordings={recordings}
+                    setRecordings={setRecordings}
+                  />
+                }
+              />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <div className="data-type-use" onClick={() => setUseMocks(!useMocks)}>
+              {useMocks
+                ? "Using Mock Data. Click to Use Live Data."
+                : "Using Live Data. Click to Use Mock Data."}
+            </div>
           </div>
         </>
       </Router>

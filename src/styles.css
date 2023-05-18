@@ -3,7 +3,7 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: #a0bdf2;
+  background-color: #81726a;
   /* background-color: #2B2118; */
   /* margin-bottom: 1.5rem; */
   padding-top: 1rem;
@@ -120,6 +120,7 @@ label {
 
 .apply-button {
   background-color: #87a330;
+  /* background-color: #CDF4CF; */
   height: 35px;
   width: 80px;
   border-radius: 7px;
@@ -154,7 +155,7 @@ label {
   margin-bottom: 1rem;
   border-bottom: 0.5px solid rgb(16, 24, 24, 0.25);
   border-radius: 0 0 4px 4px;
-  background-color: #a0bdf2;
+  background-color: #81726a;
   display: flex;
 }
 
@@ -173,7 +174,7 @@ label {
   justify-content: center;
   padding: 10px;
   align-items: center;
-  background-color: aliceblue;
+  background-color: white;
   width: 3.5rem;
   height: 3.5rem;
   margin-bottom: 0.5rem;
@@ -195,7 +196,8 @@ label {
 /* bird card styling */
 .card-container {
   height: 27rem;
-  background-color: #a0bdf2;
+  /* background-color: #a0bdf2; */
+  background-color: #daf7dc;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -293,7 +295,7 @@ label {
   gap: 0.75rem;
   /* margin-bottom: 2rem; */
   /* margin: 1rem 1rem 1rem 0; */
-  margin: 1rem 0 1rem 2rem;
+  padding: 1rem 0 1rem 2rem;
 }
 
 .back-arrow {
@@ -364,7 +366,6 @@ label {
 
 @media screen and (min-width: 620px) {
   .card-container {
-    background-color: pink;
     height: 13rem;
     flex-direction: row;
   }

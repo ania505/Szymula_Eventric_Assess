@@ -28,10 +28,10 @@ export function AddToFlock(props) {
 
     return (
         <div onClick={handleFavoriteClick}>
-            {isFavorite() ? "<3<3<3 Favorite Bird" : "Click to Add to Flock"}
-            {/* <div className="card-heart-icon-wrapper">
+            {/* {isFavorite() ? "<3<3<3 Favorite Bird" : "Click to Add to Flock"} */}
+            <div className="card-heart-icon-wrapper">
               <img className="card-heart-img" src={isFavorite() ? FilledHeart3 : HeartOutline} alt="filledHeart" />
-            </div> */}
+            </div>
         </div>
     )
     
