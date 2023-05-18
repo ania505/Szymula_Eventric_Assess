@@ -81,7 +81,6 @@ const SortBy = {
 const getSortByFunc = (sortBy) => {
   switch (sortBy) {
     case SortBy.MIN_LENGTH:
-      console.log("MINNIE");
       return (b) => b.lengthMin;
     case SortBy.MAX_LENGTH:
       return (b) => b.lengthMax;
@@ -103,7 +102,6 @@ const Status = {
 };
 
 function selectRecordingsForBird(recordings, birdId) {
-  // Should memoize this ourselves, or use the reselect library, or restructure recordings and data into a normalized object instead of array
   const recs = recordings.filter((rec) => rec.birdId === birdId);
   return recs;
 }
@@ -117,10 +115,7 @@ export const BirdDetail = (props) => {
   const { id } = useParams();
 
   const recordingsForThisBird = selectRecordingsForBird(recordings, id);
-  // const recordingsForThisBirdExist = recordings.some(rec => rec.birdId === id)
   const recordingsForThisBirdExist = recordingsForThisBird.length > 0;
-
-  console.log("AS", recordingsForThisBirdExist, recordings);
 
   const handleSelectClick = (idx) => {
     setSelectedId(idx);
@@ -141,9 +136,7 @@ export const BirdDetail = (props) => {
         },
       });
       const json = await res.json();
-      console.log("DETAIL", json);
       const recsList = json.recordings;
-      console.log("recs", recsList);
 
       const normalizedData = recsList.map((rec) => ({
         id: rec.id,
@@ -173,8 +166,6 @@ export const BirdDetail = (props) => {
     }
   }, [id]);
 
-  // console.log("abc", birdDetail)
-
   return (
     <ErrorHandler
       error={error && !recordingsForThisBirdExist}
@@ -194,7 +185,6 @@ export const BirdDetail = (props) => {
               style={{ color: recId === selectedId ? "red" : "black" }}
               onClick={() => handleSelectClick(recId)}
             >
-              {/* recording#: {rec.id} location: {rec.lat},{rec.lng} */}
               recording#: {rec.id} location: date: {rec.date} location:{" "}
               {rec.loc}
             </div>
@@ -209,14 +199,8 @@ export function RefinementHeader(props) {
   const [sortLocal, setSortLocal] = useState(props.sortBy);
   const [filterLocal, setFilterLocal] = useState(props.filterList);
 
-  console.log("FiltLoc", filterLocal);
-
   const { data, statuses, handleSubmit } = props;
-  // const {families, orders, statuses} = data
   const stats = statuses || [];
-
-  console.log("123432", data);
-  console.log("s34", statuses);
 
   const handleFilterLocalChange = (filter) => {
     if (filterLocal.some((item) => item === filter)) {
@@ -325,8 +309,6 @@ export function BirdList(props) {
     doFetch,
     loading,
     error,
-    favorites,
-    setFavorites,
     itemsPerPage = ITEMS_PER_PAGE,
     showFavoritesDefault = false,
   } = props;
@@ -351,25 +333,18 @@ export function BirdList(props) {
 
     const retreivedLikesString = localStorage.getItem('likedFromStorage')
     const retreivedLikesArray = JSON.parse(retreivedLikesString) 
-  
-  const birdsRefined = data.map((bird) => {
-    return showFavorites
-      // ? favorites.some((favorite) => favorite === bird.id)
-      ? retreivedLikesArray.some((liked) => `${liked}` === bird.id)
-      : true;
-  })
+
+  const birdsRefined = data
     .filter(filterFunc)
     .filter((bird) => {
       return showFavorites
-        ? favorites.some((favorite) => favorite === bird.id)
-        // ? retreivedLikesArray.some((liked) => `${liked}` === bird.id)
+        ? retreivedLikesArray.some((likedId) => likedId === bird.id)
         : true;
     })
     .sort((bird1, bird2) => {
       return sortFunc(bird1) >= sortFunc(bird2) ? 1 : -1;
     });
 
-  console.log('BIRDSSSSSSSSS', birdsRefined)
 
   const lastPage = birdsRefined.length / itemsPerPage;
 
@@ -396,8 +371,6 @@ export function BirdList(props) {
         {birdsPage.map((bird) => (
           <BirdCard
             bird={bird}
-            favorites={favorites}
-            setFavorites={setFavorites}
           />
         ))}
         <PaginationFooter
@@ -411,12 +384,9 @@ export function BirdList(props) {
 }
 
 export function BirdCard(props) {
-  const { bird, favorites, setFavorites } = props;
+  const { bird } = props;
   const { id, name, images } = bird;
   const hasImages = !!images && images.length > 0;
-  console.log(bird);
-
-//   const isFavorite = favorites.some((birdId) => birdId === id);
 
   const handleFavoriteClick = () => {
     let newLikesArr;
@@ -430,11 +400,6 @@ export function BirdCard(props) {
     }
     localStorage.setItem('likedFromStorage', JSON.stringify(newLikesArr))
   };
-
-//   const imgStyle = {
-//     ...birdCardStyles.likeButton,
-//     color: isFavorite ? "red" : "black",
-//   };
 
   return (
     <>
@@ -456,7 +421,6 @@ export function BirdCard(props) {
       </Link>
       <div onClick={handleFavoriteClick}>
         {"<3<3<3"}
-        {/* {isFavorite ? "<3<3<3 Favorite Bird!" : "Click to Add to Favorites"} */}
       </div>
     </>
   );
@@ -473,7 +437,6 @@ const birdCardStyles = {
 };
 
 export function NotFound() {
-  console.log("NNFFT");
   return <div>NotFound, Check if URL is correct</div>;
 }
 
@@ -482,7 +445,6 @@ function App() {
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
   const [recordings, setRecordings] = useState([]);
-  const [favorites, setFavorites] = useState([5, 8]);
 
   const doFetch = async () => {
     try {
@@ -493,11 +455,7 @@ function App() {
           "API-key": API_KEY,
         },
       });
-      console.log("res", res);
       const json = await res.json();
-      // await fetch("http://www.yahoo.com")
-      // const json = mock
-      console.log("json", json);
       const cleaned = json.map((item) => ({
         id: item.id,
         images: item.images,
@@ -506,7 +464,6 @@ function App() {
         name: item.name,
         status: item.status,
         sciName: json.sciName,
-        // recordings: json.recordings
       }));
       // throw new Error
       console.log(`Successful: API call to ${URL}`);
@@ -538,8 +495,6 @@ function App() {
                 setLoading={setLoading}
                 loading={loading}
                 error={error}
-                // favorites={favorites}
-                setFavorites={setFavorites}
               />
             }
           />
