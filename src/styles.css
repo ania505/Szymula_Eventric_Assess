@@ -4,8 +4,6 @@
   top: 0;
   z-index: 1;
   background-color: #81726a;
-  /* background-color: #2B2118; */
-  /* margin-bottom: 1.5rem; */
   padding-top: 1rem;
   display: flex;
   flex-direction: column;
@@ -17,7 +15,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-top: 20px; */
   padding-top: 1rem;
 }
 
@@ -25,23 +22,17 @@
   /*  */
 }
 
-/* refinement header styling */
 .refinement-container {
   width: 50%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* border: 3px solid orange;  */
 }
 
 .refinement-button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* maxWidth: 100%;
-    maxHeight: 100%; */
-  /* width: 50%; */
-  /* border: 1px solid red;  */
   cursor: pointer;
 }
 
@@ -49,7 +40,6 @@
   border-radius: 50%;
   display: flex;
   align-items: center;
-  /* border: 1px solid red */
 }
 
 .filter-icon {
@@ -120,7 +110,6 @@ label {
 
 .apply-button {
   background-color: #87a330;
-  /* background-color: #CDF4CF; */
   height: 35px;
   width: 80px;
   border-radius: 7px;
@@ -145,7 +134,6 @@ label {
   color: white;
   margin-bottom: 1rem;
   font-weight: bold;
-  /* border:1px solid #87A330; */
   font-size: 16px;
 }
 
@@ -160,7 +148,6 @@ label {
 }
 
 .my-flock {
-  /* border: 3px solid yellow; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -181,13 +168,9 @@ label {
 }
 
 .heart-img {
-  /* border: 1px solid red; */
   width: 3.3rem;
   height: 3rem;
   object-fit: cover;
-  /* padding: 10px; */
-  /* border-radius: 50%; */
-  /* background-color: aliceblue; */
 }
 
 .flock-text {
@@ -196,7 +179,6 @@ label {
 /* bird card styling */
 .card-container {
   height: 27rem;
-  /* background-color: #a0bdf2; */
   background-color: #daf7dc;
   display: flex;
   flex-direction: column;
@@ -225,7 +207,6 @@ label {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border: 1px solid red; */
   width: 75%;
 }
 
@@ -248,7 +229,6 @@ label {
   justify-content: center;
   padding: 10px;
   align-items: center;
-  /* background-color: aliceblue; */
   width: 2.5rem;
   height: 2.5rem;
   margin-bottom: 0.5rem;
@@ -280,21 +260,16 @@ label {
 
 /* bird detail styling */
 .detail-container {
-  /* margin: 1rem; */
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 }
 
 .back-button {
   display: flex;
   justify-content: flex-start;
-  /* border: 1px solid red; */
   align-items: center;
   gap: 0.75rem;
-  /* margin-bottom: 2rem; */
-  /* margin: 1rem 1rem 1rem 0; */
   padding: 1rem 0 1rem 2rem;
 }
 
@@ -321,8 +296,6 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid red; */
-  /* width: 90%; */
   gap: 3rem;
 }
 
@@ -364,6 +337,7 @@ label {
   width: 90%;
 }
 
+/* styling for non-mobile devices */
 @media screen and (min-width: 620px) {
   .card-container {
     height: 13rem;
