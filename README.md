@@ -15,7 +15,7 @@ To see them run:
 
 
 How to use the application:
-- On opening the app, you will see the homepage that has a header and content portion. In the header there is the site title ("Where Them Birds At"), a filter/sort button,
+- On opening the app, you will see the homepage that has a header and content portion. In the header there is the site title ("Where The Birds Sing"), a filter/sort button,
   and a liked list toggle. Below that there is the content portion that has 2 instances of pagination (top & bottom of page) and a list of bird
   species with a picture, name, and heart button.
 - To filter/ sort: Click on the "Filter & Sort By" button. A popup appears, the user makes selections, hits submit, then hits close. The list is now sorted and filtered!
@@ -23,6 +23,6 @@ How to use the application:
 - To like a bird/ add to your flock click the heart button. That bird's id is saved to localStorage to then be displayed when the user clicks the "View My Flock" button
   in the header.
 - If the user clicks on the bird title or picture, the user is taken to the Bird Details page.
-- In the detail page, user can click "back" to go back to the list or they can view the bird's species information and where they've been seen last. If they like what they   see they add or remove that bird from their flock with the heart button.
-- Map: The map is moveable and zoomable and interactive! To interact with the map, the user should click on one of the blue location markers. The blue location marker turns red and the information about that bird sighting is listed below the map so the user can see "where them birds at".
+- In the detail page, user can click "back" to go back to the list or they can view the bird's species information and where they've been recorded as seen/ heard last. If they like what they see they add or remove that bird from their flock with the heart button.
+- Map: The map is moveable and zoomable and interactive! To interact with the map, the user should click on one of the blue location markers. The blue location marker turns red and the information about that bird sighting is listed below the map so the user can see "where the birds sing".
 

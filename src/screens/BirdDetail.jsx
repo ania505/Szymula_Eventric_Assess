@@ -10,7 +10,7 @@ import {
 
 import { GoogleMaps } from "../core/GoogleMaps";
 import { UNKNOWN, API_KEY, URL } from "../constants";
-import { recordingsToBirdMock } from "../mocks/birdMocks";
+import { recordingsToBirdMock } from "../mocks/BirdMocks";
 
 import { ErrorHandler, LoadingIndicator } from "../core";
 import { AddToFlock } from "./BirdList/common/AddToFlock";

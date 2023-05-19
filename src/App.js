@@ -6,12 +6,12 @@ import {
   Routes,
 } from "react-router-dom";
 import { API_KEY, API_KEY_OLD, Status} from './constants'
-import { birdListMock, recordingsToBirdMock } from './mocks/birdMocks'
+import { birdListMock, recordingsToBirdMock } from './mocks/BirdMocks'
 import { initLocalStorage } from "./utils";
 import { isNil } from "./utils";
 import { UNKNOWN, URL } from "./constants";
 import { BirdDetail, BirdList, NotFound } from "./screens";
-import SiteTitle2 from './icons/SiteTitle2.png';
+import SiteTitle from './icons/SiteTitle.png';
 import './styles.css';
 
 export function App() {
@@ -75,7 +75,7 @@ export function App() {
         <div className="header-container">
           <div className="main-header">
             <div className="site-img-wrapper">
-              <img src={SiteTitle2} alt="siteTitle" />
+              <img src={SiteTitle} alt="siteTitle" />
             </div>
           </div>
         </div>

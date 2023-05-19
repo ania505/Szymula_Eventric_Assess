@@ -7,7 +7,7 @@ import {
   useParams,
   useNavigate,
 } from "react-router-dom";
-import SiteTitle2 from "./icons/SiteTitle2.png";
+import SiteTitle from "./icons/SiteTitle.png";
 import Filter2 from "./icons/Filter2.png";
 import FilledHeart3 from "./icons/FilledHeart3.png";
 import HeartOutline from "./icons/HeartOutline.png";
@@ -643,7 +643,7 @@ function App() {
         <div className="header-container">
           <div className="main-header">
             <div className="site-img-wrapper">
-              <img src={SiteTitle2} alt="siteTitle" />
+              <img src={SiteTitle} alt="siteTitle" />
             </div>
           </div>
         </div>
