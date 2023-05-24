@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { SortBy, Status } from "../../constants";
 
 import { getMyFlock } from "../../utils";

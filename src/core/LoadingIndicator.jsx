@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BirdRoller from "../icons/BirdRoller.gif";
 import '../styles.css';
 

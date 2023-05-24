@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
   useParams,
   useNavigate
 } from "react-router-dom";

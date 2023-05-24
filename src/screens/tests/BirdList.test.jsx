@@ -81,17 +81,14 @@ describe('BirdList pagination tests', () => {
     it('should paginate data across more than one page', () => {
         const page1 = getPage(data, 2, 0)
         const ids = page1.map(item => item.id)
-        // expect(ids).toEqual([2, 4]) 
         expect(ids).toEqual([4]) 
         const page2 = getPage(data, 2, 1)
         const ids2 = page2.map(item => item.id)
-        // expect(ids2).toEqual([8]) 
         expect(ids2).toEqual([]) 
     })
     it('should paginate data when last page has less items than items per page', () => {
         const page1 = getPage(data, 10, 0)      // Note - 10 per page here
         const ids = page1.map(item => item.id)
-        // expect(ids).toEqual([2, 4])
         expect(ids).toEqual([4, 8])
     })
 })
