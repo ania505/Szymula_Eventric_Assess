@@ -91,9 +91,5 @@ describe("BirdList tests", () => {
     const b3 = screen.getByAltText("golduck");
     expect(b3).not.toBeInTheDocument();
   });
-  it("should ", () => {});
-  it("should ", () => {});
-  it("should ", () => {});
 });
 
-describe("", () => {});
