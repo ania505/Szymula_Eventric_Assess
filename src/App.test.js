@@ -7,9 +7,6 @@ test("renders learn react link", () => {
   expect(linkElement).toBeInTheDocument();
 });
 
-describe("", () => {});
-it("should ", () => {});
-
 const IMAGE = "https://images.unsplash.com/photo-1542252223-c7f5b1142f93";
 const bird1 = {
   id: 5,
@@ -34,7 +31,7 @@ describe("BirdCard tests", () => {
     bird: bird1,
   };
 
-  it("should should render bird", () => {
+  it("should render bird", () => {
     const props = {
       favorites: [],
       setFavorites: jest.fn,
@@ -44,7 +41,7 @@ describe("BirdCard tests", () => {
     const element = screen.getByText(/pidgey/i);
     expect(element).toBeInTheDocument();
   });
-  it("should should show add to favorites button when not in favorites", () => {
+  it("should show add to favorites button when not in favorites", () => {
     const props = {
       ...baseProps,
       favorites: [2, 8],
@@ -53,17 +50,17 @@ describe("BirdCard tests", () => {
     const notFavEl = screen.getByText(/Click to Add to Favorites/i);
     expect(notFavEl).toBeInTheDocument();
   });
-  it("should should show favorite bird message when in favorites", () => {
+  it("should show favorite bird message when in favorites", () => {
     render(<BirdCard {...baseProps} />);
     const favEl = screen.getByText(/Favorite Bird!/i);
     expect(favEl).toBeInTheDocument();
   });
-  it("should should show image if bird has one", () => {
+  it("should show image if bird has one", () => {
     render(<BirdCard {...baseProps} />);
     const favEl = screen.getByAltText("pidgey bird");
     expect(favEl).toBeInTheDocument();
   });
-  it("should should now show image if bird does not have one", () => {
+  it("should now show image if bird does not have one", () => {
     const props = {
       ...baseProps,
       bird: bird2,

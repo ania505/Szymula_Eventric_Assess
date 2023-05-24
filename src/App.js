@@ -1,17 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
 } from "react-router-dom";
 import { API_KEY, API_KEY_OLD, Status} from './constants'
-import { birdListMock, recordingsToBirdMock } from './mocks/BirdMocks'
+import { birdListMock } from './mocks/BirdMocks'
 import { initLocalStorage } from "./utils";
 import { isNil } from "./utils";
 import { UNKNOWN, URL } from "./constants";
 import { BirdDetail, BirdList, NotFound } from "./screens";
 import SiteTitle from './icons/SiteTitle.png';
 import './styles.css';
+
+export const cleanData = (data) => {
+  const cleaned = data
+    .filter((item) => {
+      return !isNil(item.id) && !isNil(item.name);
+    })
+    .map((item) => ({
+      id: item.id,
+      name: item.name,
+      images: item.images || [],
+      lengthMin: item.lengthMin || Number.MAX_SAFE_INTEGER,
+      lengthMax: item.lengthMax || Number.MIN_SAFE_INTEGER,
+      status: Object.values(Status).some((stat) => stat === item.status)
+        ? item.status
+        : UNKNOWN,
+      sciName: item.sciName || UNKNOWN
+    }));
+  return cleaned
+}
 
 export function App() {
     const [loading, setLoading] = useState(false);
@@ -30,30 +49,14 @@ export function App() {
           const res = await fetch(URL, {
             method: "GET",
             headers: {
-              "API-key": API_KEY_OLD,
+              "API-key": API_KEY,
             },
           });
           json = await res.json();
         }
-        const cleaned = json
-          .filter((item) => {
-            console.log(typeof item.id, typeof item.name);
-            return !isNil(item.id) && !isNil(item.name);
-          })
-          .map((item) => ({
-            id: item.id,
-            name: item.name,
-            images: item.images || [],
-            lengthMin: item.lengthMin || 0,
-            lengthMax: item.lengthMax || 0,
-            status: Object.values(Status).some((stat) => stat === item.status)
-              ? item.status
-              : UNKNOWN,
-            sciName: json.sciName || UNKNOWN,
-          }));
+        const cleaned = cleanData(json)
         // throw new Error
-        console.log("DATA", cleaned)
-        console.log(`Successful: API call to ${URL}`);
+        console.log(`Successful API call to ${URL}`);
         setData(cleaned);
         setError(false);
         setLoading(false);
@@ -64,7 +67,7 @@ export function App() {
       }
     };
   
-    React.useEffect(() => {
+    useEffect(() => {
       doFetch();
     }, [useMocks]);
   

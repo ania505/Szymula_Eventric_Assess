@@ -5,7 +5,6 @@ export function isNil(obj) {
 }
 
 export function selectRecordingsForBird(recordings, birdId) {
-    // Should memoize this ourselves, or use the reselect library, or restructure recordings and data into a normalized object instead of array
     const recs = recordings.filter((rec) => rec.birdId === birdId);
     return recs;
 }
